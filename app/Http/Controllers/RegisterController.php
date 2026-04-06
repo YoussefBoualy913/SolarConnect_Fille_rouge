@@ -11,7 +11,7 @@ class RegisterController extends Controller
 {
     public function create()
     {
-    //   return view('visiteur.register');
+      return view('visiteur.register');
     }
 
     public function store(Request $request)
