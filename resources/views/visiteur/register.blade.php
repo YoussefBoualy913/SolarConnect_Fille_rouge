@@ -152,29 +152,53 @@
                         personnaliser votre expérience.</p> 
                 </div>
                 <!-- Form Section -->
-                <form action="" method="POST"
+                <form action="{{route('users.registerClient')}}" method="POST"
                     class="space-y-6 bg-white dark:bg-slate-800/40 p-6 md:p-8 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
                  @csrf
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Prénom -->
                         <div class="flex flex-col gap-2">
                             <label class="text-slate-700 dark:text-slate-200 text-sm font-medium"
-                                for="first-name">Prénom</label>
+                                for="first_name">Prénom</label>
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-                                id="first-name" name="first-name" placeholder="ex: Jean" required="" type="text" />
+                                id="first_name" name="first_name" placeholder="ex: Jean" required="" type="text" />
                         </div>
                         <!-- Nom -->
                         <div class="flex flex-col gap-2">
                             <label class="text-slate-700 dark:text-slate-200 text-sm font-medium"
-                                for="last-name">Nom</label>
+                                for="last_name">Nom</label>
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-                                id="last-name" name="last-name" placeholder="ex: Dupont" required="" type="text" />
+                                id="last_name" name="last_name" placeholder="ex: Dupont" required="" type="text" />
                         </div>
                     </div>
-                    <!-- Téléphone -->
+                   
+                    <!-- email -->
                     <div class="flex flex-col gap-2">
+                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium"
+                            for="email">email</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">mail</span>
+                            <input
+                                class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                                id="email" name="email" placeholder="Exemple@gmail.com" required=""
+                                type="email" />
+                        </div>
+                    </div>
+                    {{-- ville --}}
+                    <div class="flex flex-col gap-2">
+                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="city">Ville</label>
+                        <div class="relative">
+                            <span
+                                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">location_on</span>
+                            <input
+                                class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                                id="ville" name="ville" placeholder="zagora" required="" type="text" />
+                        </div>
+                    </div>
+                    {{-- phone --}}
+                     <div class="flex flex-col gap-2">
                         <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="phone">Numéro de
                             téléphone</label>
                         <div class="relative">
@@ -185,28 +209,24 @@
                                 id="phone" name="phone" placeholder="06 12 34 56 78" required="" type="tel" />
                         </div>
                     </div>
-                    <!-- Adresse -->
+                    <!-- password -->
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium"
-                            for="address">Adresse</label>
+                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="city">password</label>
                         <div class="relative">
-                            <span
-                                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">home</span>
+                           <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">lock</span>
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-                                id="address" name="address" placeholder="123 rue de l'Énergie" required=""
-                                type="text" />
+                                id="password" name="password" placeholder="" required="" type="password" />
                         </div>
                     </div>
-                    <!-- Ville -->
+                    <!-- confirm password -->
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="city">Ville</label>
+                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="city">confirme password</label>
                         <div class="relative">
-                            <span
-                                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">location_on</span>
+                           <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">lock</span>
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-                                id="city" name="city" placeholder="Paris" required="" type="text" />
+                                id="password" name="password_confirmation" placeholder="" required="" type="password" />
                         </div>
                     </div>
                     <!-- Action Buttons -->
@@ -246,30 +266,54 @@
                         personnaliser votre expérience.</p> 
                 </div>
                 <!-- Form Section -->
-                <form
+                <form action="{{route('users.registerPrestataire')}}" method="POST" enctype="multipart/form-data"
                     class="space-y-6 bg-white dark:bg-slate-800/40 p-6 md:p-8 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
-
+                @csrf
                     <div class="step2">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Prénom -->
                         <div class="flex flex-col gap-2">
                             <label class="text-slate-700 dark:text-slate-200 text-sm font-medium"
-                                for="first-name">Prénom</label>
+                                for="first_name">Prénom</label>
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-                                id="first-name" name="first-name" placeholder="ex: Jean" required="" type="text" />
+                                id="first_name" name="first_name" placeholder="ex: Jean" required="" type="text" />
                         </div>
                         <!-- Nom -->
                         <div class="flex flex-col gap-2">
                             <label class="text-slate-700 dark:text-slate-200 text-sm font-medium"
-                                for="last-name">Nom</label>
+                                for="last_name">Nom</label>
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-                                id="last-name" name="last-name" placeholder="ex: Dupont" required="" type="text" />
+                                id="last_name" name="last_name" placeholder="ex: Dupont" required="" type="text" />
                         </div>
                     </div>
-                    <!-- Téléphone -->
+                   
+                    <!-- email -->
                     <div class="flex flex-col gap-2">
+                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium"
+                            for="email">email</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">mail</span>
+                            <input
+                                class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                                id="email" name="email" placeholder="Exemple@gmail.com" required=""
+                                type="email" />
+                        </div>
+                    </div>
+                    {{-- ville --}}
+                    <div class="flex flex-col gap-2">
+                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="city">Ville</label>
+                        <div class="relative">
+                            <span
+                                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">location_on</span>
+                            <input
+                                class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
+                                id="ville" name="ville" placeholder="zagora" required="" type="text" />
+                        </div>
+                    </div>
+                    {{-- phone --}}
+                     <div class="flex flex-col gap-2">
                         <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="phone">Numéro de
                             téléphone</label>
                         <div class="relative">
@@ -280,28 +324,24 @@
                                 id="phone" name="phone" placeholder="06 12 34 56 78" required="" type="tel" />
                         </div>
                     </div>
-                    <!-- Adresse -->
+                    <!-- password -->
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium"
-                            for="address">Adresse</label>
+                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="city">password</label>
                         <div class="relative">
-                            <span
-                                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">home</span>
+                           <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">lock</span>
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-                                id="address" name="address" placeholder="123 rue de l'Énergie" required=""
-                                type="text" />
+                                id="password" name="password" placeholder="" required="" type="password" />
                         </div>
                     </div>
-                    <!-- Ville -->
+                    <!-- confirm password -->
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="city">Ville</label>
+                        <label class="text-slate-700 dark:text-slate-200 text-sm font-medium" for="city">confirme password</label>
                         <div class="relative">
-                            <span
-                                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">location_on</span>
+                           <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined">lock</span>
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
-                                id="city" name="city" placeholder="Paris" required="" type="text" />
+                                id="password" name="password_confirmation" placeholder="" required="" type="password" />
                         </div>
                     </div>
                     <!-- Action Buttons -->
@@ -332,21 +372,12 @@
                             <div class="relative">
                                 <span
                                     class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">business</span>
-                                <input
+                                <input name="company_name"
                                     class="w-full pl-10 pr-4 py-3 rounded-xl border-slate-200 dark:border-slate-800 dark:bg-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
                                     placeholder="Ex: Solaire Plus SARL" type="text" />
                             </div>
                         </div>
-                        <div class="flex flex-col gap-2">
-                            <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Numéro SIRET</label>
-                            <div class="relative">
-                                <span
-                                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">fingerprint</span>
-                                <input
-                                    class="w-full pl-10 pr-4 py-3 rounded-xl border-slate-200 dark:border-slate-800 dark:bg-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
-                                    placeholder="14 chiffres" type="text" />
-                            </div>
-                        </div>
+                    
                     </div>
                     <hr class="border-slate-100 dark:border-slate-800" />
                     <!-- Document Upload Section -->
@@ -358,14 +389,13 @@
                         <!-- File Upload 1: Assurance -->
                         <div class="flex flex-col gap-3">
                             <div class="flex justify-between items-center">
-                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Assurance
-                                    Décennale (PDF)</label>
+                                <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">CIN (PDF)</label>
                                 <span
                                     class="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">OBLIGATOIRE</span>
                             </div>
                             <div
                                 class="group relative border-2 border-dashed border-slate-200 dark:border-slate-800 hover:border-primary/50 hover:bg-primary/5 rounded-2xl p-6 transition-all cursor-pointer flex flex-col items-center justify-center gap-2">
-                                <input accept=".pdf" class="absolute inset-0 opacity-0 cursor-pointer" type="file" />
+                                <input name="cin" accept=".pdf" class="absolute inset-0 opacity-0 cursor-pointer" type="file" />
                                 <span
                                     class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary transition-colors">upload_file</span>
                                 <div class="text-center">
@@ -379,13 +409,13 @@
                         <div class="flex flex-col gap-3">
                             <div class="flex justify-between items-center">
                                 <label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Certification
-                                    RGE (PDF)</label>
+                                    RGE ou diplome (PDF)</label>
                                 <span
                                     class="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">OBLIGATOIRE</span>
                             </div>
                             <div
                                 class="group relative border-2 border-dashed border-slate-200 dark:border-slate-800 hover:border-primary/50 hover:bg-primary/5 rounded-2xl p-6 transition-all cursor-pointer flex flex-col items-center justify-center gap-2">
-                                <input accept=".pdf" class="absolute inset-0 opacity-0 cursor-pointer" type="file" />
+                                <input name="certification" accept=".pdf" class="absolute inset-0 opacity-0 cursor-pointer" type="file" />
                                 <span
                                     class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary transition-colors">verified</span>
                                 <div class="text-center">
@@ -399,7 +429,7 @@
                     <!-- Terms -->
                     <div class="flex gap-3 items-start">
                         <input class="mt-1 rounded border-slate-300 text-primary focus:ring-primary h-4 w-4" id="terms"
-                            type="checkbox" />
+                           name="terms" type="checkbox" />
                         <label class="text-xs text-slate-500 leading-relaxed" for="terms">
                             Je certifie sur l'honneur l'exactitude des informations fournies. SolarConnect se réserve le
                             droit de vérifier ces documents auprès des organismes compétents.
@@ -411,7 +441,7 @@
                             class="prestataire_step3_btn_prev flex-1 px-6 py-4 rounded-xl border border-slate-200 dark:border-slate-700 font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                             Retour
                         </button>
-                        <button
+                        <button type="submit"
                             class="flex-1 px-6 py-4 rounded-xl bg-primary text-white font-bold hover:opacity-90 shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2">
                             Finaliser l'inscription
                             <span class="material-symbols-outlined">check_circle</span>

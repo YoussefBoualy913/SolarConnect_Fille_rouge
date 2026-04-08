@@ -12,4 +12,6 @@ Route::get('/', function () {
 Route::prefix('/register')->group(function () {
 
     Route::get('create',[RegisterController::class,'create']);
+    Route::Post('store-client',[RegisterController::class,'registerClient'])->name('users.registerClient');
+    Route::Post('store-prestataire',[RegisterController::class,'registerPrestataire'])->name('users.registerPrestataire');
 });

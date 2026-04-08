@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\UserRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,9 +20,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'ville',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -38,6 +43,11 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+     
+    protected $casts = [
+    'role' => UserRole::class,
+    ];
+
     protected function casts(): array
     {
         return [
@@ -45,4 +55,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function prestataire()
+   {
+    return $this->hasOne(Prestataire::class);
+   }
+
+   
 }
