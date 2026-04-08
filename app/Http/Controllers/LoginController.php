@@ -11,8 +11,7 @@ class LoginController extends Controller
      public function create(Request $request)
     {
       
-     
-    //    return view('');
+       return view('visiteur.login');
       
     }
     
@@ -20,10 +19,10 @@ class LoginController extends Controller
    { 
       $valid = $request->validate([
         'email' => 'email',
-        'password' => 'required|string|min:3'
+        'password' => 'required|string|min:8'
       ]);
+     
      if(Auth::attempt($valid)){
-         var_dump($valid);
         $request->session()->regenerate();
         // return redirect()->route('home')->with('succer','welkom back!');
      }

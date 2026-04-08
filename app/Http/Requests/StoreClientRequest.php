@@ -27,7 +27,7 @@ class StoreClientRequest extends FormRequest
              'email'=> 'required|email',
              'ville'=> 'required|string|max:50',
              'phone'=>'nullable|string|max:50',
-             'password'=> 'required|string|min:5|confirmed',
+             'password'=> 'required|string|min:8|confirmed',
         ];
     }
 }
