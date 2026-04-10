@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,3 +23,6 @@ Route::prefix('/auth')->group(function (){
   Route::post('login',[LoginController::class,'store'])->name('login.submit');
   Route::get('logout',[LoginController::class,'logout'])->name('logout');
 });
+
+//prestataire
+require __DIR__.'/prestataire/prestataire.php';
