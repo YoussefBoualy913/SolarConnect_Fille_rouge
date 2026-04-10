@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Prestataire;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
@@ -11,8 +12,9 @@ class ServiceController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {  
+        $user = Auth::user();
+        return view('prestataire.service',compact('user'));
     }
 
     /**

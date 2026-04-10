@@ -4,7 +4,7 @@ use App\Http\Controllers\Prestataire\AvisController;
 use App\Http\Controllers\Prestataire\CommandeController;
 use App\Http\Controllers\Prestataire\DashboardController;
 use App\Http\Controllers\Prestataire\ProfileController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Prestataire\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('prestataire')->name('prestataire.')->group(function () {
