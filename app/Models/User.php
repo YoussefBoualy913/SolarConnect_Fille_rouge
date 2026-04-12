@@ -61,13 +61,21 @@ class User extends Authenticatable
     return $this->hasOne(Prestataire::class);
    }
 
+   public function services()
+  {
+    return $this->hasManyThrough(
+        Service::class,      
+        Prestataire::class  
+    );
+  }
+
    public function getInitialsAttribute()
-{
+  {
     $first = $this->first_name[0] ?? '';
     $second = $this->last_name[0] ?? '';
 
     return strtoupper($first . $second);
-}
+ }
 
    
 }

@@ -31,4 +31,9 @@ class Prestataire extends Model
    {
     return $this->hasMany(Document::class);
    }
+    public function services()
+   {
+    return $this->hasMany(Service::class);
+   }
+
 }

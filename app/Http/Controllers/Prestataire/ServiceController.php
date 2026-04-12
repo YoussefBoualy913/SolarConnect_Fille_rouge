@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Prestataire;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreserviceRequest;
+use App\Models\Category;
+use App\Models\Service;
+use App\Services\StoreServiceService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,8 +17,10 @@ class ServiceController extends Controller
      */
     public function index()
     {  
-        $user = Auth::user();
-        return view('prestataire.service',compact('user'));
+      
+        $user = Auth::user()->load('services');
+        $categories = Category::all();
+        return view('prestataire.service',compact('user','categories'));
     }
 
     /**
@@ -28,9 +34,10 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreserviceRequest $request,StoreServiceService $storeServiceService)
     {
-        //
+         $storeServiceService->store($request);
+         return back();
     }
 
     /**

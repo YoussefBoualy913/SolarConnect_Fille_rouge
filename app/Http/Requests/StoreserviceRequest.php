@@ -22,9 +22,19 @@ class StoreserviceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|min:10',
-            'price' => 'required|numeric|min:0'
+    'title' => ['required','string', 'min:3', 'max:255'],
+
+    'price' => ['required','numeric','min:0'],
+    
+    'description' => ['required','string','min:10','max:1000' ],
+
+    'category_id' => [ 'required', 'exists:categories,id'],
+
+    'duration_value' => ['required','integer','min:1'],
+
+    'duration_unit' => ['required','in:minutes,hours,days'],
+
+    'image' => ['nullable','image','mimes:jpg,jpeg,png,webp','max:2048',],
         ];
     }
 }
