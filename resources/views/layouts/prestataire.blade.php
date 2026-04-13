@@ -223,6 +223,8 @@
         </button>
        
     </nav>
+
+    @yield('popup')
 </body>
 
 </html>

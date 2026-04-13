@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Prestataire;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
 class CommandeController extends Controller
@@ -12,7 +13,7 @@ class CommandeController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**

@@ -22,9 +22,19 @@ class UpdateserviceRequest extends FormRequest
     public function rules(): array
     {
         return [
-             'title' => 'sometimes|required|string|max:255',
-            'description' => 'sometimes|required|string|min:10',
-            'price' => 'sometimes|required|numeric|min:0'
+            'title' => ['sometimes','required','string', 'min:3', 'max:255'],
+
+            'price' => ['sometimes','required','numeric','min:0'],
+    
+            'description' => ['sometimes','required','string','min:10','max:1000' ],
+
+            'category_id' => ['sometimes', 'required', 'exists:categories,id'],
+
+            'duration_value' => ['sometimes','required','integer','min:1'],
+
+            'duration_unit' => ['sometimes','required','in:minutes,hours,days'],
+
+            'image' => ['sometimes','nullable','image','mimes:jpg,jpeg,png,webp','max:2048',],
         ];
     }
 }

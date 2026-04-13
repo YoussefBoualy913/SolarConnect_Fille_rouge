@@ -165,7 +165,7 @@
                     <h3 class="text-xl font-headline font-bold">Services Actifs</h3>
                     <span class="text-xs font-bold bg-secondary-container text-on-secondary-container px-2 py-1 rounded">{{$user->services->count() }}</span>
                 </div>
-               
+                <!-- Service Card 1 -->
                 @foreach ($user->services as $service )
                     @if ($service->status  === "active")
                         
@@ -205,11 +205,9 @@
                                     </div>
                                 </div>
                      <div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-end gap-2">
-                        <div>
-                            <button
-                            onclick='openEditModal(@json($service))'
+                        <button
+                           onclick='openEditModal(@json($service))'
                             class="text-[10px] font-bold uppercase tracking-wider text-primary hover:underline">update</button>
-                        </div>
                       
                         <form action="{{ route('prestataire.services.destroy',$service->id) }}" method="POST" >
                          @csrf
@@ -297,25 +295,23 @@
 
         <form id="editForm" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PATCH')
+            @method('PUT')
 
             <div class="space-y-4">
-                 <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Titre
-                                du service</label>
+                
                 <input type="text" name="title" id="editTitle"
                     class="w-full p-3 rounded-lg border"
                     placeholder="Titre">
-                 <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">description</label>
+
                 <textarea name="description" id="editDescription"
                     class="w-full p-3 rounded-lg border"
                     placeholder="Description"></textarea>
-                 <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">price</label>
+
                 <input type="number" name="price" id="editPrice"
                     class="w-full p-3 rounded-lg border"
                     placeholder="Prix">
 
                 <div class="flex gap-2">
-                     <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Durée estimée</label>
                     <input type="number" name="duration_value" id="editDurationValue"
                         class="w-1/2 p-3 rounded-lg border">
 
@@ -326,7 +322,6 @@
                         <option value="days">Jours</option>
                     </select>
                 </div>
-                
 
                 <button type="submit"
                     class="w-full bg-primary text-white py-3 rounded-lg">

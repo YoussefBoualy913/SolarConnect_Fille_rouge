@@ -20,8 +20,9 @@ class StoreServiceService
           'days' => $storeserviceRequest->duration_value * 1440,
            default => throw new Exception('Invalid duration unit'),
         };
-
+      if($storeserviceRequest->file('image')){
       $path = $storeserviceRequest->file('image')->store('services', 'public');
+      }
      $prestataire = Auth::user()->prestataire;
 
       Service::create([
@@ -31,7 +32,7 @@ class StoreServiceService
            'category_id' => $storeserviceRequest->category_id,
            'prestataire_id' => $prestataire->id,
            'duree' => $durationInMinutes,
-           'image_url' => $path,
+           'image_url' => $path ?? null,
       ]);
     }
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Prestataire;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreserviceRequest;
+use App\Http\Requests\UpdateserviceRequest;
 use App\Models\Category;
 use App\Models\Service;
 use App\Services\StoreServiceService;
+use App\Services\UpdateServiceService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,16 +61,19 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateserviceRequest $updateserviceRequest,Service $service,UpdateServiceService $updateServiceService)
     {
-        //
+        $updateServiceService->store($updateserviceRequest,$service);
+
+         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Service $service)
     {
-        //
+        $service->delete();
+       return back();
     }
 }

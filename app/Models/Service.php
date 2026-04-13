@@ -32,4 +32,29 @@ class Service extends Model
 {
     return $this->belongsTo(Prestataire::class);
 }
+
+public function getDurationFormattedAttribute(): string
+{
+    $minutes = $this->duree;
+
+    $days = floor($minutes / 1440);
+    $hours = floor(($minutes % 1440) / 60);
+    $mins = $minutes % 60;
+
+    $parts = [];
+
+    if ($days > 0) {
+        $parts[] = $days . 'j';
+    }
+
+    if ($hours > 0) {
+        $parts[] = $hours . 'h';
+    }
+
+    if ($mins > 0 && $days === 0) {
+        $parts[] = $mins . 'min';
+    }
+
+    return implode(' ', $parts);
+}
 }

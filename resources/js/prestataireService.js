@@ -29,3 +29,26 @@ removeBtn.addEventListener('click', () => {
     preview.classList.add('hidden');
     uploadBox.classList.remove('hidden');
 });
+
+// affichage  de  form update servive
+window.openEditModal = function(service) {
+    const modal = document.getElementById('editModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+
+    
+    document.getElementById('editTitle').value = service.title;
+    document.getElementById('editDescription').value = service.description;
+    document.getElementById('editPrice').value = service.price;
+    document.getElementById('editDurationValue').value = service.duration_value;
+    document.getElementById('editDurationUnit').value = service.duration_unit;
+
+    
+    document.getElementById('editForm').action = `/prestataire/services/${service.id}`;
+};
+
+window.closeEditModal = function() {
+    const modal = document.getElementById('editModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+};
