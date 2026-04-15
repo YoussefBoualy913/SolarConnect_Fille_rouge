@@ -1,113 +1,6 @@
-<!DOCTYPE html>
-
-<html class="light" lang="fr">
-
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface": "#f8f9ff",
-                        "inverse-surface": "#27313e",
-                        "tertiary-fixed": "#ffe083",
-                        "on-primary": "#ffffff",
-                        "on-error": "#ffffff",
-                        "inverse-primary": "#ffb690",
-                        "on-secondary-fixed": "#121c2a",
-                        "surface-variant": "#d9e3f4",
-                        "tertiary": "#735c00",
-                        "surface-container": "#e5eeff",
-                        "surface-bright": "#f8f9ff",
-                        "on-tertiary-container": "#4e3e00",
-                        "secondary-fixed-dim": "#bdc7d9",
-                        "outline-variant": "#e0c0b1",
-                        "secondary": "#555f6f",
-                        "error-container": "#ffdad6",
-                        "tertiary-container": "#cea700",
-                        "primary-fixed": "#ffdbca",
-                        "primary": "#9d4300",
-                        "inverse-on-surface": "#eaf1ff",
-                        "background": "#f8f9ff",
-                        "secondary-fixed": "#d9e3f6",
-                        "surface-container-high": "#dfe9fa",
-                        "on-secondary-fixed-variant": "#3d4756",
-                        "on-secondary": "#ffffff",
-                        "on-primary-fixed": "#341100",
-                        "on-tertiary": "#ffffff",
-                        "surface-container-highest": "#d9e3f4",
-                        "on-tertiary-fixed-variant": "#574500",
-                        "on-tertiary-fixed": "#231b00",
-                        "surface-container-low": "#eef4ff",
-                        "on-error-container": "#93000a",
-                        "on-primary-container": "#582200",
-                        "on-surface": "#121c28",
-                        "primary-container": "#f97316",
-                        "surface-dim": "#d1dbec",
-                        "surface-tint": "#9d4300",
-                        "on-background": "#121c28",
-                        "on-primary-fixed-variant": "#783200",
-                        "primary-fixed-dim": "#ffb690",
-                        "on-secondary-container": "#596373",
-                        "outline": "#8c7164",
-                        "tertiary-fixed-dim": "#eec200",
-                        "error": "#ba1a1a",
-                        "surface-container-lowest": "#ffffff",
-                        "secondary-container": "#d6e0f3",
-                        "on-surface-variant": "#584237"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "fontFamily": {
-                        "headline": ["Manrope"],
-                        "body": ["Inter"],
-                        "label": ["Inter"]
-                    }
-                },
-            },
-        }
-    </script>
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-family: 'Manrope', sans-serif;
-        }
-
-        .glass-nav {
-            backdrop-filter: blur(20px);
-            background-color: rgba(248, 249, 255, 0.8);
-        }
-    </style>
-</head>
-
-<body class="bg-surface text-on-surface">
+@extends('layouts.client')
     <!-- TopNavBar (Shared Component) -->
+    @section('content')
     <nav
         class="fixed top-0 w-full z-50 glass-nav shadow-[0_12px_32px_rgba(18,28,40,0.06)] flex justify-between items-center px-6 py-3 w-full font-['Manrope'] antialiased tracking-tight">
         <div class="flex items-center gap-8">
@@ -289,35 +182,46 @@
                        
                        
                         <!-- Card 2: Maintenance -->
+                        @foreach ($services as $service )
+                            
+                       
                         <div
                             class="group bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col transition-all hover:shadow-xl">
                             <div class="h-48 overflow-hidden relative">
+                                @if ($service->image_url)
+                                    
                                 <img alt="Service technician"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                    data-alt="A professional solar technician checking electrical components of an inverter with specialized tools in a clean garage"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoNH-1njqaB6rbyyndVAfoCLR-BB5_GHUYVvdF3tutMKemyHOBNBWmZNvB6u-bxRvGLndXB1i7BPHJHJ2J6mx0wcLYB4goa0Ohmcgv2hrxFlRzOzLuOTMewtjq4SRwnMcRDRlcspPSQeNloKKhCNS3wXX13ZGh5PYPVFeOGWsrwtAKCjDiUZ1dMfb_vpfohPeYBZGsc9B_MQL8oUc20wUM6K306vyOsIcG39Zlef9r8LvSed_Wa9zeGQNw86tzMZc2mvW7sKC6HK8" />
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="A professional solar technician checking electrical components of an inverter with specialized tools in a clean garage"
+                                src="{{ asset('storage/' . $service->image_url) }}" />
+                                @else
+                                <div
+                                  class="w-[100%] h-[100%] rounded-lg bg-surface-container-high flex items-center justify-center shrink-0">
+                                  <span class="material-symbols-outlined text-slate-400" data-icon="image">image</span>
+                                </div>
+                                @endif
                                 <div
                                     class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full font-bold text-primary text-sm shadow-sm">
-                                    299 €
+                                    {{$service->price}}MAD
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="font-extrabold text-lg text-on-surface mb-2">Audit de Performance Annuel
+                                <h4 class="font-extrabold text-lg text-on-surface mb-2">{{ $service->title }}
                                 </h4>
-                                <p class="text-sm text-on-surface-variant mb-4 line-clamp-2">Contrôle complet de votre
-                                    installation, nettoyage des modules et optimisation du rendement énergétique.</p>
+                                <p class="text-sm text-on-surface-variant mb-4 line-clamp-2">{{$service->description}}</p>
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-1">
                                         <span class="material-symbols-outlined text-tertiary-container text-sm"
                                             data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
                                         <span class="font-bold text-sm">4.8</span>
                                     </div>
-                                    <button class="text-primary font-bold text-sm hover:underline">Voir dispo</button>
+                                    <a href="{{ route('services.show',$service->id) }}" class="text-primary font-bold text-sm hover:underline">Voir dispo</a>
                                 </div>
                             </div>
                         </div>
+                         @endforeach
                         <!-- Card 3: Repair -->
-                        <div
+                        {{-- <div
                             class="group bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col transition-all hover:shadow-xl">
                             <div class="h-48 overflow-hidden relative">
                                 <img alt="Cleaning solar panels"
@@ -342,7 +246,7 @@
                                     <button class="text-primary font-bold text-sm hover:underline">Voir dispo</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- Pagination -->
                     <div class="mt-12 flex justify-center items-center gap-2">
@@ -372,6 +276,4 @@
         class="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-primary to-primary-container text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
         <span class="material-symbols-outlined text-3xl" data-icon="support_agent">support_agent</span>
     </button>
-</body>
-
-</html>
+@endsection
