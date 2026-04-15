@@ -26,3 +26,6 @@ Route::prefix('/auth')->group(function (){
 
 //prestataire
 require __DIR__.'/prestataire/prestataire.php';
+
+//client
+require __DIR__.'/client/client.php';
