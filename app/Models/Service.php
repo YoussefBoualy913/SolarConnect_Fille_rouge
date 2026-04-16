@@ -33,6 +33,12 @@ class Service extends Model
     return $this->belongsTo(Prestataire::class);
 }
 
+public function orders()
+{
+    return $this->belongsToMany(Order::class)
+        ->withPivot('quantity', 'price');
+}
+
 public function getDurationFormattedAttribute(): string
 {
     $minutes = $this->duree;

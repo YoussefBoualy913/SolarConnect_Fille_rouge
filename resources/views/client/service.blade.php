@@ -224,7 +224,7 @@
                     </div>
                     <!-- Quick Actions -->
                     <div class="flex flex-col gap-4">
-                        <a href=""
+                        <a href="{{ route('carts.add') }}"
                             class="w-full py-4 px-6 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-bold text-lg shadow-lg shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-3">
                             Réserver ce service
                             <span class="material-symbols-outlined">bolt</span>
