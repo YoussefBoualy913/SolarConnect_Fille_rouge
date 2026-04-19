@@ -35,8 +35,9 @@ class Service extends Model
 
 public function orders()
 {
-    return $this->belongsToMany(Order::class)
-        ->withPivot('quantity', 'price');
+    return $this->belongsToMany(Order::class,'orderItems')
+        ->withPivot('quantity', 'price')
+        ->withTimestamps();
 }
 
 public function getDurationFormattedAttribute(): string

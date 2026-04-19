@@ -20,9 +20,9 @@ class RegisterController extends Controller
     public function registerClient(StoreClientRequest $request)
     {
        $validated = $request->validated();
-      //  $user = User::create($validated);
-      // Auth::login($user);
-    //  return redirect()->route('home');
+       $user = User::create($validated);
+      Auth::login($user);
+     return redirect()->route('login');
     }
 
       public function registerPrestataire(StorePrestataireRequest $request,RegisterRrestataireService $registerPrestataireService)

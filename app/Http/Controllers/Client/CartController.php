@@ -8,7 +8,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use OrderSevice;
+use App\Services\OrderSevice;
 
 class CartController extends Controller
 {

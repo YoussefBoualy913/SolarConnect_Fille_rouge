@@ -224,11 +224,15 @@
                     </div>
                     <!-- Quick Actions -->
                     <div class="flex flex-col gap-4">
-                        <a href="{{ route('carts.add') }}"
+                        <form action="{{ route('carts.add',$service) }}" method="POST">
+                            @csrf
+                        <button type="submit"
                             class="w-full py-4 px-6 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-bold text-lg shadow-lg shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-3">
                             Réserver ce service
                             <span class="material-symbols-outlined">bolt</span>
-                        </a>
+
+                        </button>
+                        </form>
                         <a href=" {{ route('services.index') }}"
                             class="w-full py-4 px-6 bg-white text-on-surface border border-outline-variant/30 rounded-xl font-bold text-sm hover:bg-surface-container-low transition-all flex items-center justify-center gap-2">
                             <span class="material-symbols-outlined text-sm">west</span>

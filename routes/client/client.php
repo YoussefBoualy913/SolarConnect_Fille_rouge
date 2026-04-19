@@ -16,7 +16,7 @@ Route::prefix('client')->group(function () {
     Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
 
     Route::get('/cart', [CartController::class, 'index']);
-    Route::post('/cart/{id}', [CartController::class, 'add'])->name('carts.add');
+    Route::post('/cart/{service}', [CartController::class, 'add'])->name('carts.add');
 
     Route::get('/orders', [OrderController::class, 'index']);
     Route::post('/orders', [OrderController::class, 'store']);
