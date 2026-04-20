@@ -35,7 +35,7 @@ class Service extends Model
 
 public function orders()
 {
-    return $this->belongsToMany(Order::class,'orderItems')
+    return $this->belongsToMany(Order::class,'order_items')
         ->withPivot('quantity', 'price')
         ->withTimestamps();
 }

@@ -14,19 +14,22 @@ class CartController extends Controller
 {
     public function index()
      {
-        //   $order->load('services');
+        $order = order::with('services')->where('status','cart')->first();
+        return view('client.orderCart',compact('order'));
      } 
 
     public function add(OrderSevice $orderSevice ,Service $service)
      {
        
           $orderSevice->addCard($service);
+          return redirect()->route('carts.index');
        
      }
 
-    public function remove($serviceId) 
+    public function remove(OrderSevice $orderSevice,Service $service) 
     {
-
+       $orderSevice->removeCard(Auth::user()->id,$service);
+       return back();
     }
 
     public function update($serviceId) 

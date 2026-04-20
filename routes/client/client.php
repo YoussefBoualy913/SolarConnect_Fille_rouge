@@ -15,11 +15,12 @@ Route::prefix('client')->group(function () {
     Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
     Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
 
-    Route::get('/cart', [CartController::class, 'index']);
+    Route::get('/cart', [CartController::class, 'index'])->name('carts.index');
     Route::post('/cart/{service}', [CartController::class, 'add'])->name('carts.add');
+    Route::delete('/cart/{service}', [CartController::class, 'remove'])->name('carts.destroy');
 
-    Route::get('/orders', [OrderController::class, 'index']);
-    Route::post('/orders', [OrderController::class, 'store']);
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::post('/orders/{order}', [OrderController::class, 'store'])->name('orders.store');
 
     Route::post('/reviews', [ReviewController::class, 'store']);
 });

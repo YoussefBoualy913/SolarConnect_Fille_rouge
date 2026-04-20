@@ -39,4 +39,42 @@ class OrderSevice
       $order->save();
       });
   }
+
+  public function removeCard($userId,$service)
+  {
+
+   
+   return DB::transaction(function () use ($userId, $service) {
+
+        $order = Order::where('client_id', $userId)
+            ->where('status', 'cart')
+            ->firstOrFail();
+
+         $service = $order->services()
+            ->where('service_id', $service->id)
+            ->firstOrFail();
+
+      
+        if ($service->pivot->quantity > 1) {
+
+            $order->services()->updateExistingPivot($service->id, [
+                'quantity' => DB::raw('quantity - 1')
+            ]);
+
+        } else {
+
+            $order->services()->detach($service->id);
+        }
+
+        $total = $order->services()
+            ->selectRaw('SUM(order_items.price * order_items.quantity) as total')
+            ->value('total') ?? 0;
+
+        $order->update(['total_price' => $total]);
+
+        return $order;
+    });
+     
+
+  }
 }
