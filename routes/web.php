@@ -29,3 +29,6 @@ require __DIR__.'/prestataire/prestataire.php';
 
 //client
 require __DIR__.'/client/client.php';
+
+//admin
+require __DIR__.'/admin/admin.php';

@@ -132,7 +132,7 @@
         </div>
     </header>
     <main class="max-w-7xl mx-auto px-6 py-12">
-        @if ($order->services)
+        @if ($order->services()->exists())
         <div class="mb-10">
             <h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Selected Services</h1>
             <p class="text-on-surface-variant font-medium">Review your custom solar configuration and professional

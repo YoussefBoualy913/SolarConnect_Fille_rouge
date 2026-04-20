@@ -77,5 +77,10 @@ class User extends Authenticatable
     return strtoupper($first . $second);
  }
 
+ public function clientOrders()
+{
+    return $this->hasMany(Order::class, 'client_id'); 
+}
+
    
 }

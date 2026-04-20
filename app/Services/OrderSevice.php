@@ -11,12 +11,24 @@ class OrderSevice
 {
      public function addCard(Service $service)
      {
-         
+     
      DB::transaction(function () use ( $service) {
          $order = Order::firstOrCreate([
           'client_id' => Auth::user()->id,
           'status' => 'cart'
         ]);
+        
+         if (!$order->prestataire_id) {
+            $order->prestataire_id = $service->prestataire_id;
+            $order->save();
+         }
+
+
+    if ($order->prestataire_id !== $service->prestataire_id) {
+          return back()->withErrors([
+             'error' => 'Vous ne pouvez pas ajouter des services de différents prestataires.'
+         ]);
+     }
 
        if ($order->services()->where('service_id', $service->id)->exists()) {
 

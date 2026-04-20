@@ -49,7 +49,7 @@
              <a class="text-slate-500 hover:bg-slate-100 transition-colors px-3 py-1 rounded-lg"
                     href="{{ route('carts.index') }}">Cart</a>
             <a class="flex items-center gap-3 p-3 text-slate-600 hover:bg-orange-50 transition-all duration-300 rounded-lg"
-                href="#">
+                href="{{ route('orders.index') }}">
                 <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
                 Commandes
             </a>

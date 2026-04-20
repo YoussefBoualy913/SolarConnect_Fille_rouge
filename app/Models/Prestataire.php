@@ -36,4 +36,9 @@ class Prestataire extends Model
     return $this->hasMany(Service::class);
    }
 
+   public function orders()
+   {
+    return $this->hasMany(Order::class);
+   }
+
 }

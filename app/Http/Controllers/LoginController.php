@@ -24,7 +24,18 @@ class LoginController extends Controller
      
      if(Auth::attempt($valid)){
         $request->session()->regenerate();
-        // return redirect()->route('home')->with('succer','welkom back!');
+        if (Auth::user()->role === 'prestataire') {
+    
+           return redirect()->route('prestataire.dashboard')->with('succer','welkom back!');
+         }
+         if (Auth::user()->role === 'client') {
+    
+           return redirect()->route('services.index')->with('succer','welkom back!');
+         }
+         if (Auth::user()->role === 'prestataire') {
+    
+           return redirect()->route('admin.dashboard')->with('succer','welkom back!');
+         }
      }
      return back()->withErrors([
         'email' => 'Identifiants ou mot de passe incorrects',
