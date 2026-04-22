@@ -34,20 +34,14 @@ class RegisterRrestataireService
         ]);
 
        
-        $cinPath = $request->file('cin')->store('documents/cin', 'public');
-        $certPath = $request->file('certification')->store('documents/certifications', 'public');
+        $cinPath = $request->file('cin')->store('documents/cin');
+        $certPath = $request->file('certification')->store('documents/certifications');
 
        
         Document::create([
             'prestataire_id' => $prestataire->id,
-            'file_path' => $cinPath,
-            'type' => 'cin',
-        ]);
-
-        Document::create([
-            'prestataire_id' => $prestataire->id,
-            'file_path' => $certPath,
-            'type' => 'certification',
+            'cin_path' => $cinPath,
+            'certificat_path' => $certPath
         ]);
     });
 

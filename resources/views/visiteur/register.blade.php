@@ -58,10 +58,10 @@
                     <h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">
                         SolarConnect</h2>
                 </div>
-                <button
+                <a  href="{{route('home')}}"
                     class="flex items-center justify-center rounded-full size-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition-colors">
                     <span class="material-symbols-outlined">close</span>
-                </button>
+                </a>
             </header>
             <main class="flex-1 flex flex-col items-center justify-center px-4 py-12">
                 
@@ -163,6 +163,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="first_name" name="first_name" placeholder="ex: Jean" required="" type="text" />
+                                 @error('first_name')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                         <!-- Nom -->
                         <div class="flex flex-col gap-2">
@@ -171,6 +174,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="last_name" name="last_name" placeholder="ex: Dupont" required="" type="text" />
+                                  @error('last_name')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                    
@@ -184,6 +190,9 @@
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="email" name="email" placeholder="Exemple@gmail.com" required=""
                                 type="email" />
+                                 @error('title')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                     {{-- ville --}}
@@ -195,6 +204,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="ville" name="ville" placeholder="zagora" required="" type="text" />
+                                 @error('ville')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                     {{-- phone --}}
@@ -207,6 +219,10 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="phone" name="phone" placeholder="06 12 34 56 78" required="" type="tel" />
+                                 @error('phone')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
+                            
                         </div>
                     </div>
                     <!-- password -->
@@ -217,6 +233,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="password" name="password" placeholder="" required="" type="password" />
+                                 @error('password')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                     <!-- confirm password -->
@@ -227,6 +246,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="password" name="password_confirmation" placeholder="" required="" type="password" />
+                                 @error('password_confirmation')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                     <!-- Action Buttons -->
@@ -278,6 +300,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="first_name" name="first_name" placeholder="ex: Jean" required="" type="text" />
+                                 @error('first_name')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                         <!-- Nom -->
                         <div class="flex flex-col gap-2">
@@ -286,6 +311,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent px-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="last_name" name="last_name" placeholder="ex: Dupont" required="" type="text" />
+                                 @error('last_name')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                    
@@ -299,6 +327,9 @@
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="email" name="email" placeholder="Exemple@gmail.com" required=""
                                 type="email" />
+                                 @error('email')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                     {{-- ville --}}
@@ -310,6 +341,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="ville" name="ville" placeholder="zagora" required="" type="text" />
+                                 @error('ville')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                     {{-- phone --}}
@@ -322,6 +356,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="phone" name="phone" placeholder="06 12 34 56 78" required="" type="tel" />
+                                 @error('phone')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                     <!-- password -->
@@ -332,6 +369,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="password" name="password" placeholder="" required="" type="password" />
+                                 @error('password')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                     <!-- confirm password -->
@@ -342,6 +382,9 @@
                             <input
                                 class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent pl-12 pr-4 py-3 text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                                 id="password" name="password_confirmation" placeholder="" required="" type="password" />
+                                 @error('password_confirmation')
+                                      <p class="text-red-500">{{ $message }}</p>
+                             @enderror
                         </div>
                     </div>
                     <!-- Action Buttons -->
@@ -375,6 +418,9 @@
                                 <input name="company_name"
                                     class="w-full pl-10 pr-4 py-3 rounded-xl border-slate-200 dark:border-slate-800 dark:bg-slate-900 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
                                     placeholder="Ex: Solaire Plus SARL" type="text" />
+                                     @error('company_name')
+                                      <p class="text-red-500">{{ $message }}</p>
+                                     @enderror
                             </div>
                         </div>
                     
@@ -398,11 +444,15 @@
                                 <input name="cin" accept=".pdf" class="absolute inset-0 opacity-0 cursor-pointer" type="file" />
                                 <span
                                     class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-primary transition-colors">upload_file</span>
+
                                 <div class="text-center">
                                     <p class="text-sm font-medium text-slate-700 dark:text-slate-300">Cliquez pour
                                         téléverser ou glissez le fichier</p>
                                     <p class="text-xs text-slate-500 mt-1">Taille max : 5 Mo</p>
                                 </div>
+                                 @error('cin')
+                                      <p class="text-red-500">{{ $message }}</p>
+                                     @enderror
                             </div>
                         </div>
                         <!-- File Upload 2: Certification RGE -->
@@ -423,6 +473,9 @@
                                         téléverser ou glissez le fichier</p>
                                     <p class="text-xs text-slate-500 mt-1">Taille max : 5 Mo</p>
                                 </div>
+                                 @error('certification')
+                                      <p class="text-red-500">{{ $message }}</p>
+                                     @enderror
                             </div>
                         </div>
                     </div>

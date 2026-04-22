@@ -224,83 +224,84 @@
                         </thead>
                         <tbody class="divide-y divide-surface-variant/20">
                             <!-- Order Row 1 -->
-                            @foreach ( $orders as $order )
-                                
-                            
-                                
-                            
-                            <tr class="hover:bg-surface-container-low transition-colors group">
-                                <td class="px-6 py-5">
-                                    <div class="flex items-center gap-4">
-                                        <div
-                                            class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-primary">
-                                            <span class="material-symbols-outlined"
-                                                data-icon="solar_power">solar_power</span>
+                            @foreach ($orders as $order)
+                                <tr class="hover:bg-surface-container-low transition-colors group">
+                                    <td class="px-6 py-5">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-primary">
+                                                <span class="material-symbols-outlined"
+                                                    data-icon="solar_power">solar_power</span>
+                                            </div>
+                                            <div>
+                                                <span
+                                                    class="block font-bold text-on-surface text-sm">{{ $order->name }}</span>
+
+                                            </div>
                                         </div>
-                                        <div>
-                                            <span class="block font-bold text-on-surface text-sm">{{$order->name}}</span>
-                                           
+                                    </td>
+                                    <td class="px-6 py-5 text-sm text-on-surface-variant">{{ $order->created_at }}</td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex items-center gap-2">
+                                            <img class="w-6 h-6 rounded-full"
+                                                data-alt="professional logo of a technical service company specializing in renewable energy"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw6q6fT-h9jWF2fu5dZDBomTuImDhLDkt97EZ4voPCRdXrRmn00XyL8ouOkLPKJmxoH4dclMZuxWqznSOZjx-YyBOOWZumlINyYnUtZqhskJpiOQYq55j-CU6iV2hOH1k325ZkJuQokEbx5Tm6mdILa386kc6cOEIXgXYaJu3K2pjLXoRqBSemXG-hcbSgPKoFrd0Y6J9X0iBMTEkC-VSOFXWpQYIWcmEj3yaLE2cEMcMmwnnZTWDutMwfgrVLjoXiBwgYr89XfRs" />
+                                            <span
+                                                class="text-sm font-medium"></span>{{ $order->prestataire->user->first_name . ' ' . $order->prestataire->user->last_name }}
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-5 text-sm text-on-surface-variant">{{$order->created_at}}</td>
-                                <td class="px-6 py-5">
-                                    <div class="flex items-center gap-2">
-                                        <img class="w-6 h-6 rounded-full"
-                                            data-alt="professional logo of a technical service company specializing in renewable energy"
-                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw6q6fT-h9jWF2fu5dZDBomTuImDhLDkt97EZ4voPCRdXrRmn00XyL8ouOkLPKJmxoH4dclMZuxWqznSOZjx-YyBOOWZumlINyYnUtZqhskJpiOQYq55j-CU6iV2hOH1k325ZkJuQokEbx5Tm6mdILa386kc6cOEIXgXYaJu3K2pjLXoRqBSemXG-hcbSgPKoFrd0Y6J9X0iBMTEkC-VSOFXWpQYIWcmEj3yaLE2cEMcMmwnnZTWDutMwfgrVLjoXiBwgYr89XfRs" />
-                                        <span class="text-sm font-medium"></span>{{ $order->prestataire->user->first_name." ".$order->prestataire->user->last_name}}
-                                    </div>
-                                </td>
-                                <td class="px-6 py-5 text-center">
-                                    @if($order->status === "confirmed" )
-                                        
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-green-100 text-green-700">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                        Terminé
-                                    </span>
-                                    @elseif ( $order->status ==="pending" )
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-orange-100 text-orange-700">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-                                        En cours
-                                    </span>
-                                    @elseif ( $order->status ==="rejected" )
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-orange-100 text-orange-800">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
-                                        rejected
-                                    </span>
-                                    @elseif($order->status ==="cart")
-                                     <span
-                                        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-700">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                                        cart
-                                    </span>
-
-
-                                    @endif
-                                </td>
-                                <td class="px-6 py-5 text-right font-bold text-on-surface">{{$order->total_price}} MAD</td>
-                                <td class="px-6 py-5">
-                                    <div class="flex gap-2">
-                                        <button
-                                            class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors">
-                                            <span class="material-symbols-outlined"
-                                                data-icon="visibility">visibility</span>
-                                        </button>
-                                        <button
-                                            class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-colors">
-                                            <span class="material-symbols-outlined"
-                                                data-icon="chat_bubble">chat_bubble</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-
+                                    </td>
+                                    <td class="px-6 py-5 text-center">
+                                        @if ($order->status === 'confirmed')
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-green-100 text-green-700">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                                Terminé
+                                            </span>
+                                        @elseif ($order->status === 'pending')
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-orange-100 text-orange-700">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                                En cours
+                                            </span>
+                                        @elseif ($order->status === 'rejected')
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-orange-100 text-orange-800">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                                                rejected
+                                            </span>
+                                        @elseif($order->status === 'cart')
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-700">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                                cart
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-5 text-right font-bold text-on-surface">
+                                        {{ $order->total_price }} MAD</td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex gap-2">
+                                            <button
+                                                class="p-2 text-blue-500 hover:bg-blue-500/10 rounded-lg transition-colors">
+                                                <span class="material-symbols-outlined">
+                                                    edit
+                                                </span>
+                                            </button>
+                                            <form action="{{ route('orders.destroy',$order) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                            <button type="submit"
+                                                class="p-2 text-red-500 hover:bg-red-500/10 rounded-lg transition-colors">
+                                                <span class="material-symbols-outlined">
+                                                    delete
+                                                </span>
+                                            </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
-                     
+
                         </tbody>
                     </table>
                 </div>

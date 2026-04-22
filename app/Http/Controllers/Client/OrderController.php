@@ -29,8 +29,9 @@ class OrderController extends Controller
          return redirect()->route('services.index');
      } 
 
-     public function show($id) 
+     public function destroy(Order $order) 
      {
-        
+        $order->delete();
+        return back();
      } 
 }

@@ -70,10 +70,10 @@
         </div>
         <nav class="flex items-center gap-4">
             <a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-4 rounded-md px-2 py-1"
-                href="#">S'inscrire</a>
-            <button
+                href="{{ route('users.register') }}">S'inscrire</a>
+            <a href="{{ route('home') }}"
                 class="bg-primary text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 hover:scale-[1.02] active:scale-100 transition-all focus-visible:ring-4 focus-visible:ring-primary/30 outline-none">En
-                savoir plus</button>
+                savoir plus</a>
         </nav>
     </header>
     <main class="flex-1 flex flex-col lg:flex-row overflow-hidden">
