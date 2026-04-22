@@ -14,7 +14,8 @@ Route::prefix('admin')
             ->name('dashboard');
 
         Route::resource('users', UserController::class);
+        Route::post('approuver/users/{user}', [UserController::class,'approuver'])->name('approuver');
         Route::resource('categories', CategoryController::class);
-        Route::get('/document/cin/{users}', [DocumentController::class, 'showCin'])->name('showCin');
-        Route::get('/document/certificat/{users}', [DocumentController::class, 'showCertificat'])->name('showCertificat');
+        Route::get('/document/cin/{user}', [DocumentController::class, 'showCin'])->name('showCin');
+        Route::get('/document/certificat/{user}', [DocumentController::class, 'showCertificat'])->name('showCertificat');
 });

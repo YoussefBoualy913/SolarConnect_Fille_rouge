@@ -24,7 +24,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->dropColumn('cetificat_path');
+            $table->dropColumn('certificat_path');
             $table->renameColumn('cin_path','file_path');
             $table->string('type');
 

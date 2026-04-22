@@ -5,33 +5,47 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
     
-public function showCin(User $prestataire)
+public function showCin(User $user)
 {
 
+ 
     
     
     // if (auth()->id() !== $prestataire->id && !auth()->user()->isAdmin()) {
     //     abort(403, 'Accès non autorise');
     // }
-    dd($prestataire);
-  $user = $prestataire->load('prestataire.documents');
+    
+  $user = $user->load('prestataire.documents');
   
   $documents = $user->prestataire?->documents;
+  
+  foreach($documents as $document)
+    {  
+        if($document->type === "cin")
+            {
+                $cin_path = $document->file_path;
 
-    $fullPath = storage_path('app/' . $cin_path);
-    
+            }
+
+    }
+
+    // $fullPath = storage_path('app/' .$cin_path);
+    $fullPath = Storage::disk('local')->path($cin_path);
+   
     if (!file_exists($fullPath)) {
+        dd($fullPath);
         abort(404, 'Fichier non trouve: ' . $fullPath);
     }
     
     return response()->file($fullPath);
 }
 
-public function showCertificat(User $prestataire)
+public function showCertificat(User $user)
 {
 
     
@@ -40,16 +54,29 @@ public function showCertificat(User $prestataire)
     //     abort(403, 'Accès non autorise');
     // }
     
-    $path = storage_path('app/' . $prestataire->certificat_path);
-    
-    if (!file_exists($path)) {
-        abort(404, 'Document non trouve');
-    }
+   $user = $user->load('prestataire.documents');
   
-    return response()->file($path, [
-        'Content-Type' => mime_content_type($path),
-        'Content-Disposition' => 'inline; filename="'.basename($path).'"'
-    ]);
+  $documents = $user->prestataire?->documents;
+  
+  foreach($documents as $document)
+    {  
+        if($document->type === "certificat")
+            {
+                $certificat_path = $document->file_path;
+
+            }
+
+    }
+
+   
+    $fullPath = Storage::disk('local')->path($certificat_path);
+   
+    if (!file_exists($fullPath)) {
+        dd($fullPath);
+        abort(404, 'Fichier non trouve: ' . $fullPath);
+    }
+    
+    return response()->file($fullPath);
 }
 
 }

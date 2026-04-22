@@ -25,7 +25,8 @@ class User extends Authenticatable
         'ville',
         'email',
         'password',
-        'role'
+        'role',
+        'phone',
     ];
 
     /**
@@ -45,7 +46,7 @@ class User extends Authenticatable
      */
      
     protected $casts = [
-    'role' => UserRole::class,
+    'role' => UserRole::class
     ];
 
     protected function casts(): array

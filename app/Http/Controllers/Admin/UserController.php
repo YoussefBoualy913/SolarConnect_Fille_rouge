@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\PrestataireStatus;
 use Illuminate\Http\Request;
+
+use function Whoops\Example\bar;
 
 class UserController extends Controller
 {
@@ -61,5 +65,20 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    public function approuver(User $user)
+    {
+        $user = $user->load('prestataire');
+        $prestataire = $user->prestataire;
+
+        $prestataire->update(
+            [
+                'status'=>PrestataireStatus::APPROVED
+            ]
+        );
+
+        return bar();
     }
 }

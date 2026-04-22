@@ -40,8 +40,14 @@ class RegisterRrestataireService
        
         Document::create([
             'prestataire_id' => $prestataire->id,
-            'cin_path' => $cinPath,
-            'certificat_path' => $certPath
+            'file_path' => $cinPath,
+            'type' => 'cin'
+        ]);
+
+         Document::create([
+            'prestataire_id' => $prestataire->id,
+            'file_path' => $certPath,
+            'type' => 'certificat'
         ]);
     });
 
