@@ -211,10 +211,10 @@
             </div>
              <div class="flex items-center mb-4 gap-4">
                 <div class="relative group ">
-                    <form action={{ route('admin.users.index') }}" class="flex gap-4" method="POST">
-                        @csrf
+                    <form action="{{ route('admin.users.index') }}"" class="flex gap-4" method="GET">
+                        
                     <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="search">search</span>
-                    <input name="search" class="bg-surface-container-low border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 w-64 transition-all" placeholder="Rechercher un utilisateur..." type="text" />
+                    <input  name="search" value="@if ($search){{ $search }}@endif" class="bg-surface-container-low border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/20 w-64 transition-all" placeholder="Rechercher un utilisateur..." type="text" />
                     <button type="submit"  class="bg-surface-container-high/60 rounded-full px-4 py-2 text-sm font-semibold text-on-surface-variant flex items-center gap-2">
                         Rechercher
                     </button>
