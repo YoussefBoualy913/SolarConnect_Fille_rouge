@@ -29,7 +29,7 @@ public function client()
 public function getNameAttribute()
 {
     $titles = $this->services->pluck('title');
-
+     
     if ($titles->count() > 2) {
         return $titles->take(2)->implode(', ') . '...';
     }

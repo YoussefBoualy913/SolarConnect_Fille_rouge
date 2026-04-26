@@ -16,6 +16,8 @@ class DashboardController extends Controller
         $q->where('status','pending');
       })->get();
 
-      return view('admin.dashboard',compact('prestataires'));
+      $users = User::all()->where('role','!=','admin');
+
+      return view('admin.dashboard',compact('prestataires','users'));
    }
 }

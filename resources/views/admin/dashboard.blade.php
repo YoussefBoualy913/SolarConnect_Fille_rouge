@@ -342,7 +342,7 @@
                                 <td>
                                 <form action="{{ route('admin.approuver',$prestataire->id)}}" method="POST">
                                     @csrf
-                                <button type="submit" class="btn-approve" disabled style=" cursor:pointer;" title="Fonctionnalité disponible avec JavaScript">Approuver</button>
+                                <button type="submit" class="btn-approve"  style=" cursor:pointer;" title="Fonctionnalité disponible avec JavaScript">Approuver</button>
                                 </form>
                                 </td>
                             </tr>
@@ -375,101 +375,35 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Carte utilisateur 1 -->
-                    <div class="user-card">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-blue-600">person</span>
+                      @foreach ($users as $user )
+                          
+                      <div class="user-card">
+                          <div class="flex items-center gap-3 mb-3">
+                              <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                  <span class="material-symbols-outlined text-blue-600">person</span>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-on-surface">{{$user->first_name." ".$user->last_name}}</p>
+                                    <p class="text-xs text-on-surface-variant">{{$user->email}}</p>
+                                </div>
                             </div>
-                            <div>
-                                <p class="font-bold text-on-surface">Sophie Martin</p>
-                                <p class="text-xs text-on-surface-variant">sophie.martin@email.com</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between text-xs">
-                            <span class="text-on-surface-variant">Inscrit le: 20/04/2025</span>
-                            <span class="text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Actif</span>
-                        </div>
-                    </div>
-                    <!-- Carte utilisateur 2 -->
-                    <div class="user-card">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-blue-600">person</span>
-                            </div>
-                            <div>
-                                <p class="font-bold text-on-surface">Thomas Dubois</p>
-                                <p class="text-xs text-on-surface-variant">thomas.d@email.com</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between text-xs">
-                            <span class="text-on-surface-variant">Inscrit le: 19/04/2025</span>
-                            <span class="text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Actif</span>
-                        </div>
-                    </div>
-                    <!-- Carte utilisateur 3 -->
-                    <div class="user-card">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-blue-600">person</span>
-                            </div>
-                            <div>
-                                <p class="font-bold text-on-surface">Claire Bernard</p>
-                                <p class="text-xs text-on-surface-variant">claire.bernard@email.com</p>
+                            <div class="flex justify-between text-xs">
+                                <span class="text-on-surface-variant">{{$user->created_at}}</span>
+                               
+                                @if($user->role->value === "client")
+                                    
+                                <span class="text-green-600 bg-green-50 px-2 py-0.5 rounded-full">client</span>
+                                @endif
+                                @if($user->role->value === "prestataire")
+                                    
+                                <span class="text-orange-600 bg-green-50 px-2 py-0.5 rounded-full">prestatire</span>
+                                @endif
                             </div>
                         </div>
-                        <div class="flex justify-between text-xs">
-                            <span class="text-on-surface-variant">Inscrit le: 18/04/2025</span>
-                            <span class="text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Actif</span>
-                        </div>
-                    </div>
-                    <!-- Carte utilisateur 4 -->
-                    <div class="user-card">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-blue-600">person</span>
-                            </div>
-                            <div>
-                                <p class="font-bold text-on-surface">Nicolas Petit</p>
-                                <p class="text-xs text-on-surface-variant">nicolas.p@email.com</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between text-xs">
-                            <span class="text-on-surface-variant">Inscrit le: 17/04/2025</span>
-                            <span class="text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Actif</span>
-                        </div>
-                    </div>
-                    <!-- Carte utilisateur 5 -->
-                    <div class="user-card">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-blue-600">person</span>
-                            </div>
-                            <div>
-                                <p class="font-bold text-on-surface">Julie Lefevre</p>
-                                <p class="text-xs text-on-surface-variant">julie.lefevre@email.com</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between text-xs">
-                            <span class="text-on-surface-variant">Inscrit le: 16/04/2025</span>
-                            <span class="text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Actif</span>
-                        </div>
-                    </div>
-                    <!-- Carte utilisateur 6 -->
-                    <div class="user-card">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-blue-600">person</span>
-                            </div>
-                            <div>
-                                <p class="font-bold text-on-surface">David Moreau</p>
-                                <p class="text-xs text-on-surface-variant">david.moreau@email.com</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between text-xs">
-                            <span class="text-on-surface-variant">Inscrit le: 15/04/2025</span>
-                            <span class="text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Actif</span>
-                        </div>
-                    </div>
+                        @endforeach
+
+                    
+                  
                 </div>
                 <div class="mt-6 text-center">
                     <button class="text-primary font-bold text-sm hover:underline">Voir tous les utilisateurs →</button>

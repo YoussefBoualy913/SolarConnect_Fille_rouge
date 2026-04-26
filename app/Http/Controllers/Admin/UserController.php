@@ -79,6 +79,20 @@ class UserController extends Controller
             ]
         );
 
-        return bar();
+        return back();
+    }
+
+     public function rejecter(User $user)
+    {
+        $user = $user->load('prestataire');
+        $prestataire = $user->prestataire;
+
+        $prestataire->update(
+            [
+                'status'=>PrestataireStatus::REJECTED
+            ]
+        );
+
+        return back();
     }
 }
