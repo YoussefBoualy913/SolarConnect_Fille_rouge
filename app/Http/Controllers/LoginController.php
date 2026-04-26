@@ -19,7 +19,7 @@ class LoginController extends Controller
    { 
       $valid = $request->validate([
         'email' => 'email',
-        'password' => 'required|string|min:8'
+        'password' => 'required|string|min:6'
       ]);
      
      if(Auth::attempt($valid)){
@@ -32,7 +32,7 @@ class LoginController extends Controller
     
            return redirect()->route('services.index')->with('succer','welkom back!');
          }
-         if (Auth::user()->role === 'prestataire') {
+         if (Auth::user()->role === 'admin') {
     
            return redirect()->route('admin.dashboard')->with('succer','welkom back!');
          }

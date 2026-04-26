@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\PrestataireStatus;
+use App\UserStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use function Whoops\Example\bar;
 
@@ -15,8 +18,10 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+
     {
-        //
+        $users = User::paginate(3);
+        return view('admin.users',compact('users'));
     }
 
     /**
@@ -94,5 +99,31 @@ class UserController extends Controller
         );
 
         return back();
+    }
+
+    public function banni(User $user) 
+     {
+      
+        if($user->role->value === "admin" || Auth::user()->role->value != "admin")
+            {
+                return redirect()->back()->with('message','vous ne peux pas fait cette instruction');
+            } 
+        $user->update([
+            'status'=> UserStatus::INACTIVE
+        ]);
+        return redirect()->back()->with('message','user banni avec succer');
+    }
+
+    public function debanni(User $user)
+     {
+          if($user->role->value === "admin" || Auth::user()->role->value != "admin")
+            {
+                return redirect()->back()->with('message','vous ne peux pas fait cette instruction');
+            } 
+        $user->update([
+            'status'=> UserStatus::ACTIVE
+        ]);  
+
+        return redirect()->back()->with('message','user banni avec succer');
     }
 }
