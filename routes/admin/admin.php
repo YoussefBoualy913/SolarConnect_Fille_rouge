@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\DocumentController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')
-    ->name('admin.')
+    ->name('admin.')->middleware('admin')
     ->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])

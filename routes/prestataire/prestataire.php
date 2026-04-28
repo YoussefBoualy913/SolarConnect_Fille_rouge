@@ -7,7 +7,7 @@ use App\Http\Controllers\Prestataire\ProfileController;
 use App\Http\Controllers\Prestataire\ServiceController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('prestataire')->name('prestataire.')->group(function () {
+Route::prefix('prestataire')->name('prestataire.')->middleware('prestataire')->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

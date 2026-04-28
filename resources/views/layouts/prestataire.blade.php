@@ -192,7 +192,7 @@
             <div class="mt-[66%] flex flex-col gap-1">
                
                 <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 transition-all font-manrope font-medium text-sm"
-                    href="#">
+                    href="{{ route('logout') }}">
                     <span class="material-symbols-outlined" data-icon="logout">logout</span>
                     Logout
                 </a>

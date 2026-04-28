@@ -7,7 +7,7 @@ use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\Client\ServiceController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('client')->group(function () {
+Route::prefix('client')->middleware('client')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'show']);
     Route::put('/profile', [ProfileController::class, 'update']);
