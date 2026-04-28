@@ -25,8 +25,8 @@
                     </div>
                     <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-md">+12.5%</span>
                 </div>
-                <p class="text-sm font-medium text-on-surface-variant">Revenu Total</p>
-                <h3 class="font-headline text-2xl font-black text-on-surface mt-1">45,280 €</h3>
+                <p class="text-sm font-medium text-on-surface-variant">Services actif</p>
+                <h3 class="font-headline text-2xl font-black text-on-surface mt-1">{{$stats['services']}}</h3>
             </div>
             <div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_12px_32px_rgba(18,28,40,0.04)] hover:shadow-lg transition-all group">
                 <div class="flex justify-between items-start mb-4">
@@ -46,17 +46,17 @@
                     <span class="text-xs font-bold text-on-surface-variant bg-slate-100 px-2 py-1 rounded-md">Stable</span>
                 </div>
                 <p class="text-sm font-medium text-on-surface-variant">Prestataires Actifs</p>
-                <h3 class="font-headline text-2xl font-black text-on-surface mt-1">86</h3>
+                <h3 class="font-headline text-2xl font-black text-on-surface mt-1">{{$stats['prestataires']}}</h3>
             </div>
             <div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_12px_32px_rgba(18,28,40,0.04)] hover:shadow-lg transition-all group">
                 <div class="flex justify-between items-start mb-4">
                     <div class="p-3 bg-purple-50 rounded-lg text-purple-600 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined" data-icon="ads_click" style="font-variation-settings: 'FILL' 1;">ads_click</span>
                     </div>
-                    <span class="text-xs font-bold text-error bg-error-container px-2 py-1 rounded-md">-1.4%</span>
+                    <span class="text-xs font-bold text-error bg-error-container px-2 py-1 rounded-md"></span>
                 </div>
-                <p class="text-sm font-medium text-on-surface-variant">Taux de Conversion</p>
-                <h3 class="font-headline text-2xl font-black text-on-surface mt-1">4.2%</h3>
+                <p class="text-sm font-medium text-on-surface-variant">Clients</p>
+                <h3 class="font-headline text-2xl font-black text-on-surface mt-1">{{$stats['clients']}}</h3>
             </div>
         </section>
 
