@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-     public function index() 
+     public function index(Request $request) 
      {
-         $services = Service::with('prestataire.user','category')->paginate(4);
+        $search = trim($request->input('search'));
+         $services = Service::query()
+         ->with('prestataire.user','category')
+          ->when($search, function ($query, $search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%");
+            });
+        })
+         ->paginate(4);
          return view('client.services',compact('services'));
      } 
      

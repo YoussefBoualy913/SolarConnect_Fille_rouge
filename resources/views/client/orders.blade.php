@@ -107,28 +107,26 @@
         class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_12px_32px_rgba(18,28,40,0.06)] font-['Manrope'] antialiased tracking-tight">
         <nav class="flex justify-between items-center px-6 py-3 w-full max-w-7xl mx-auto">
             <div class="flex items-center gap-8">
+                <span class="material-symbols-outlined bg-primary-container shadow-lg shadow-primary-container text-white"
+                style="font-variation-settings: 'FILL' 1;">solar_power</span>
                 <span class="text-2xl font-black text-orange-600 dark:text-orange-500">SolarConnect</span>
-                <div class="hidden md:flex gap-6">
-                    <a class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors px-3 py-2 rounded-lg"
-                        href="#">Dashboard</a>
-                    <a class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors px-3 py-2 rounded-lg"
-                        href="#">Recherche de services</a>
-                    <a class="text-orange-600 dark:text-orange-400 font-bold border-b-2 border-orange-600 px-3 py-2"
-                        href="#">Commandes</a>
-                    <a class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors px-3 py-2 rounded-lg"
-                        href="#">Profil</a>
-                </div>
+               
             </div>
             <div class="flex items-center gap-4">
                 <button
                     class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors active:scale-95 duration-200">
                     <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
                 </button>
-                <div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-orange-50">
-                    <img alt="User profile"
-                        data-alt="professional headshot of a smiling man in a business casual attire with soft office lighting background"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR83m_1nqUpm3ob55ojOBEQ2eaSStDEzH_Rs4QJhCj2ZZMxN0q8p1lSAieta-zeFka1mGGt0RCgFlxmqXPz-_ontCiuvAyc779IkbsFDs9GvNlQ6u8RUVwJNFyEnde5GwutJ-5F5S9nShRgtazwhZ_9PNJpPBTCRiGYbe_fVJdfkjFBThdz6RpfPtNS-BvLeEufXn6LAAcqENZSAYSXfSPHgxIDZgKCOoD3udBmL6YMee67BJZCwcwoHULUX9aRA379PsPmPvtY3w" />
-                </div>
+                 <div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+             <div class="text-right hidden sm:block">
+                     <p class="text-xs font-bold text-slate-900">{{Auth::user()->first_name." ".Auth::user()->last_name}}</p>
+                     <p class="text-[10px] text-slate-500">{{ Auth::user()->email }}</p>
+                 </div>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container">
+                <img alt="User profile"
+                    data-alt="Professional portrait of a male user with a friendly expression in a modern office setting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsbHOTLtnsz9j0LbFKo0bJflBA5717Aa3Uog3W61BX1GliuvYjcDSDINoW9TSdJwqvGAcLXglGbAYqE76VFLgp-kACJio6WGCRPk2S01KAh19nEWX3RwzplZlygILm0GBq0Lbw40DPrqs_AKPyZo6BGfb-2NWerTg1RqFC1ji7G2oMHl_SygbUZgBVBavLPGVp4m8ltmzMiL5rbIUhW9DJpo2vD4GXaM0Xl41FbWURRaH64mgiDc28qbwA1N7LWtTxWTGZ9xIbTjE" />
+            </div>
             </div>
         </nav>
     </header>
@@ -136,36 +134,37 @@
     <aside
         class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-950 p-4 gap-2 font-['Inter'] font-medium text-sm pt-20">
         <div class="mb-8 px-4">
-            <h2 class="text-xl font-extrabold text-slate-900 dark:text-white">Energy Portal</h2>
-            <p class="text-slate-500 text-xs">SolarConnect</p>
+            <h2 class="text-xl font-extrabold text-slate-900 dark:text-white">Commandes</h2>
+            <p class="text-slate-500 text-xs">Energy Portal</p>
         </div>
-        <nav class="flex-1 space-y-1">
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-orange-50 transition-all rounded-lg"
-                href="#">
-                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-                <span>Dashboard</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-orange-50 transition-all rounded-lg"
-                href="#">
+        <nav class="flex flex-col gap-1">
+           
+            <a class="flex items-center gap-3 p-3 text-slate-600 hover:bg-orange-50 transition-all duration-300 rounded-lg" href="{{ route('client.services.index') }}">
                 <span class="material-symbols-outlined" data-icon="search">search</span>
-                <span>Recherche de services</span>
+                Recherche de services
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 bg-orange-50 text-orange-700 rounded-lg" href="#">
+            <a class="text-slate-500 hover:bg-slate-100 transition-colors px-3 py-1 rounded-lg"
+                href="{{ route('client.carts.index') }}">
                 <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
-                <span>Commandes</span>
+                Cart</a>
+            <a class="flex items-center gap-3 p-3 bg-orange-50 text-orange-700 rounded-lg"
+                href="{{ route('client.orders.index') }}">
+                <span class="material-symbols-outlined">list_alt</span>
+                Commandes
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-orange-50 transition-all rounded-lg"
-                href="#">
+            <a class="flex items-center gap-3 p-3 text-slate-600 hover:bg-orange-50 transition-all duration-300 rounded-lg"
+                href="{{ route('client.profile.show') }}">
                 <span class="material-symbols-outlined" data-icon="person">person</span>
-                <span>Profil</span>
+                Profil
             </a>
         </nav>
-        <div class="mt-auto p-4 bg-primary/10 rounded-xl">
-            <p class="text-primary font-bold mb-2">Upgrade Plan</p>
-            <p class="text-xs text-on-surface-variant mb-3">Accédez à plus de services premium.</p>
-            <button
-                class="w-full bg-primary text-white py-2 rounded-lg text-xs font-bold hover:opacity-90 transition-opacity">Passer
-                Pro</button>
+         <div class="px-8 mt-auto pt-8 border-t border-slate-200/10">
+
+            <a class="flex items-center text-slate-500 dark:text-slate-400 px-2 py-3 hover:text-error transition-all font-headline font-bold text-lg"
+                href="{{ route('logout') }}">
+                <span class="material-symbols-outlined mr-4" data-icon="logout">logout</span>
+                <span>Logout</span>
+            </a>
         </div>
     </aside>
     <!-- Main Content Canvas -->
@@ -177,35 +176,7 @@
                 et services énergétiques. Suivez l'état d'avancement de vos projets en temps réel.</p>
         </div>
         <!-- Filters & Stats Bento Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-            <div
-                class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_12px_32px_rgba(18,28,40,0.04)] border-none">
-                <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2 block">Total
-                    Dépensé</span>
-                <div class="flex items-end justify-between">
-                    <span class="text-3xl font-headline font-black text-primary">12 450 €</span>
-                    <span
-                        class="text-tertiary-container bg-tertiary-fixed text-[10px] font-bold px-2 py-1 rounded-full">+12%</span>
-                </div>
-            </div>
-            <div
-                class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_12px_32px_rgba(18,28,40,0.04)] border-none">
-                <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2 block">Commandes
-                    Actives</span>
-                <span class="text-3xl font-headline font-black text-on-surface">3</span>
-            </div>
-            <div
-                class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_12px_32px_rgba(18,28,40,0.04)] border-none">
-                <span
-                    class="text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-2 block">Interventions</span>
-                <span class="text-3xl font-headline font-black text-on-surface">8</span>
-            </div>
-            <div
-                class="bg-primary-container p-6 rounded-xl shadow-[0_12px_32px_rgba(18,28,40,0.1)] flex flex-col justify-between text-white">
-                <span class="material-symbols-outlined text-3xl" data-icon="bolt">bolt</span>
-                <span class="font-bold text-sm">Économies réalisées : 420kg CO2</span>
-            </div>
-        </div>
+       
         <!-- Orders Table/List Container -->
         <div class="bg-surface-container-low rounded-xl overflow-hidden p-1">
             <div class="bg-surface-container-lowest rounded-lg">
@@ -287,7 +258,7 @@
                                                     edit
                                                 </span>
                                             </button>
-                                            <form action="{{ route('orders.destroy',$order) }}" method="POST">
+                                            <form action="{{ route('client.orders.destroy',$order) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                             <button type="submit"
@@ -309,13 +280,27 @@
         </div>
         <!-- Pagination -->
         <div class="mt-8 flex justify-between items-center px-4">
-            <p class="text-sm text-on-surface-variant">Affichage de <span class="font-bold text-on-surface">3</span>
-                sur <span class="font-bold text-on-surface">24</span> commandes</p>
+            <p class="text-sm text-on-surface-variant">Affichage de <span class="font-bold text-on-surface">{{ $orders->count() }}</span>
+                sur <span class="font-bold text-on-surface">{{ $orders->total() }}</span> commandes</p>
             <div class="flex gap-2">
+                @if ($orders->onFirstPage())
+                    
                 <button
                     class="px-4 py-2 bg-surface-container-highest rounded-lg text-sm font-bold opacity-50 cursor-not-allowed">Précédent</button>
+                    @else
+                    <a href="{{$orders->previousPageUrl() }}"
+                        class="px-4 py-2 bg-surface-container-highest rounded-lg text-sm font-bold ">Précédent</a>
+
+                @endif
+                @if ($orders->hasMorePages())
+                <a href="{{ $orders->nextPageUrl() }}"
+                    class="px-4 py-2 bg-surface-container-highest hover:bg-surface-variant transition-colors rounded-lg text-sm font-bold">Suivant</a>
+                
+                @else
+
                 <button
-                    class="px-4 py-2 bg-surface-container-highest hover:bg-surface-variant transition-colors rounded-lg text-sm font-bold">Suivant</button>
+                    class="px-4 py-2 bg-surface-container-highest hover:bg-surface-variant opacity-50 transition-colors rounded-lg text-sm font-bold  cursor-not-allowed">Suivant</button>
+                @endif
             </div>
         </div>
     </main>

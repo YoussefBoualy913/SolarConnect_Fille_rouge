@@ -105,13 +105,11 @@
                 <span class="text-2xl font-black text-orange-600">SolarConnect</span>
                 <nav class="hidden md:flex gap-6">
                     <a class="text-slate-500 hover:bg-slate-100 px-3 py-1 rounded transition-colors duration-200"
-                        href="#">Dashboard</a>
+                        href="{{ route('client.services.index') }}">Recherche de services</a>
                     <a class="text-slate-500 hover:bg-slate-100 px-3 py-1 rounded transition-colors duration-200"
-                        href="#">Recherche de services</a>
-                    <a class="text-slate-500 hover:bg-slate-100 px-3 py-1 rounded transition-colors duration-200"
-                        href="#">Commandes</a>
+                        href="{{ route('client.orders.index') }}">Commandes</a>
                     <a class="text-orange-600 font-bold border-b-2 border-orange-600 px-3 py-1"
-                        href="#">Profil</a>
+                        href="{{ route('client.profile.show') }}">Profil</a>
                 </nav>
             </div>
             <div class="flex items-center gap-4">

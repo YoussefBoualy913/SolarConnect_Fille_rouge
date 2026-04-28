@@ -22,7 +22,7 @@ class CartController extends Controller
      {
        
           $orderSevice->addCard($service);
-          return redirect()->route('carts.index');
+          return redirect()->route('client.carts.index');
        
      }
 

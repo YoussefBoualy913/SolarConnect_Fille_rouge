@@ -113,25 +113,40 @@
             </div>
             <nav class="hidden md:flex items-center gap-8">
                 <a class="text-slate-500 dark:text-slate-400 hover:opacity-80 transition-opacity font-medium"
-                    href="#">Home</a>
+                    href="{{ route('client.services.index') }}">Recherche de services</a>
                 <a class="text-slate-500 dark:text-slate-400 hover:opacity-80 transition-opacity font-medium"
-                    href="#">Explore</a>
-                <a class="text-orange-600 dark:text-orange-400 font-bold hover:opacity-80 transition-opacity"
-                    href="#">Cart</a>
+                    href="{{ route('client.orders.index') }}"> Commandes</a>
+                
                 <a class="text-slate-500 dark:text-slate-400 hover:opacity-80 transition-opacity font-medium"
-                    href="#">Profile</a>
+                    href="{{ route('client.profile.show') }}">Profile</a>
             </nav>
             <div class="flex items-center gap-4">
                 <button class="p-2 text-slate-500 hover:bg-surface-container-low rounded-full transition-colors">
-                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="text-orange-600 dark:text-orange-400 font-bold hover:opacity-80 transition-opacity material-symbols-outlined">shopping_cart</span>
                 </button>
-                <button class="p-2 text-slate-500 hover:bg-surface-container-low rounded-full transition-colors">
-                    <span class="material-symbols-outlined">account_circle</span>
+                 <div class="flex items-center gap-4">
+                <button
+                    class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors active:scale-95 duration-200">
+                    <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
                 </button>
+                 <div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+             <div class="text-right hidden sm:block">
+                     <p class="text-xs font-bold text-slate-900">{{Auth::user()->first_name." ".Auth::user()->last_name}}</p>
+                     <p class="text-[10px] text-slate-500">{{ Auth::user()->email }}</p>
+                 </div>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container">
+                <img alt="User profile"
+                    data-alt="Professional portrait of a male user with a friendly expression in a modern office setting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsbHOTLtnsz9j0LbFKo0bJflBA5717Aa3Uog3W61BX1GliuvYjcDSDINoW9TSdJwqvGAcLXglGbAYqE76VFLgp-kACJio6WGCRPk2S01KAh19nEWX3RwzplZlygILm0GBq0Lbw40DPrqs_AKPyZo6BGfb-2NWerTg1RqFC1ji7G2oMHl_SygbUZgBVBavLPGVp4m8ltmzMiL5rbIUhW9DJpo2vD4GXaM0Xl41FbWURRaH64mgiDc28qbwA1N7LWtTxWTGZ9xIbTjE" />
+            </div>
+            </div>
             </div>
         </div>
     </header>
     <main class="max-w-7xl mx-auto px-6 py-12">
+        @if ($order)
+            
+       
         @if ($order->services()->exists())
         <div class="mb-10">
             <h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Selected Services</h1>
@@ -155,13 +170,13 @@
                     <div class="w-full sm:w-48 h-48 rounded-lg overflow-hidden bg-surface-container-low">
                         <img class="w-full h-full object-cover"
                             data-alt="Modern rooftop solar panel installation under a clear bright sky with high contrast sunlight and architectural details"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC87Xs6u8faTHpDgxrnIMdHHAC2DbXu92kOTT4H5DHnRLLIm1N0xoiPMqFq2bxUyo4u-UqbS93hex1IPa8gLSr3GlnNbhqjW212Q9jF-jhH9Z2YSJeM3VqSR1uHupjFw0sqmoBJvIoY2olchYp72eOCCTxxvQiuOV-kKUJHk5eFsQ5_Q3gDsz9ay0WX_HKHz3f0R1Puvw24J1xeZP09boWVmdDn9R_oYi_3aiufDD1MzH9nQFO4ma8vNOTDlwg7Re_xnVGU-4LSSsk" />
+                            src="{{asset('storage/'. $service->image_url)  }}" />
                     </div>
                     <div class="flex-1 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start mb-2">
                                 <h3 class="text-xl font-bold text-on-surface">{{ $service->title }}</h3>
-                                <form action="{{ route('carts.destroy',$service) }}" method="POST">
+                                <form action="{{ route('client.carts.destroy',$service) }}" method="POST">
                                     @method('delete')
                                     @csrf
                                 <button class="text-on-surface-variant hover:text-error transition-colors" type="submit">
@@ -219,7 +234,7 @@
                             </div>
                         </div>
                     </div>
-                    <form action="{{ route('orders.store',$order)}}" method="POST">
+                    <form action="{{ route('client.orders.store',$order)}}" method="POST">
                         @csrf
                     <button type="submit"
                         class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-lg shadow-lg shadow-orange-600/20 active:scale-95 transition-all mb-4">
@@ -233,7 +248,7 @@
                 </div>
                 <div class="flex bg-primary-fixed p-6 rounded-xl">
                   
-                    <a href= "{{ route('services.index') }}"
+                    <a href= "{{ route('client.services.index') }}"
                         class="w-[100%] py-2 bg-surface-container-lowest text-center text-primary font-bold rounded-lg text-sm transition-colors hover:bg-white">
                     Ajouter un service
                     </a>
@@ -247,11 +262,23 @@
              
             </div>
             
-            <a href= "{{ route('services.index') }}"
+            <a href= "{{ route('client.services.index') }}"
                         class="w-[100%] py-2 bg-surface-container-lowest text-center text-primary font-bold rounded-lg text-sm transition-colors hover:bg-white">
                     Reteur choisi un service
                     </a>
            @endif
+    @else
+     <div class="mb-10 items-center">
+            <h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Selected Services</h1>
+            <p class="text-on-surface-variant font-medium">Aucun service sur la cart!</p>
+             
+            </div>
+            
+            <a href= "{{ route('client.services.index') }}"
+                        class="w-[100%] py-2 bg-surface-container-lowest text-center text-primary font-bold rounded-lg text-sm transition-colors hover:bg-white">
+                    Reteur choisi un service
+                    </a>
+    @endif
            
     </main>
     <!-- BottomNavBar (Mobile Only) -->

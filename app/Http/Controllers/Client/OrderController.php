@@ -15,7 +15,7 @@ class OrderController extends Controller
 {
      public function index() 
      {
-          $orders = Auth::user()->clientOrders()->with('services','prestataire.user')->get();
+          $orders = Auth::user()->clientOrders()->with('services','prestataire.user')->paginate(4);
           
           return view('client.orders',compact('orders'));
 
@@ -26,7 +26,7 @@ class OrderController extends Controller
           $order->update([
               'status'=> OrderStatus::PENDIGN
           ]);
-         return redirect()->route('services.index');
+         return redirect()->route('client.services.index');
      } 
 
      public function destroy(Order $order) 

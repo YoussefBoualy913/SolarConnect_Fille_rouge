@@ -99,7 +99,7 @@
     <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm">
         <div class="flex justify-between items-center px-4 h-16 w-full max-w-7xl mx-auto">
             <div class="flex items-center gap-4">
-                <a href="{{ route('services.index') }}"
+                <a href="{{ route('client.services.index') }}"
                     class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 transition-transform">
                     <span class="material-symbols-outlined text-slate-500">arrow_back</span>
                 </a>
@@ -176,7 +176,7 @@
                         <div>
                             <p class="text-on-surface-variant text-sm font-medium mb-1">Prix à partir de</p>
                             <div class="flex items-baseline gap-2">
-                                <span class="text-4xl font-extrabold text-primary font-headline tracking-tight">4
+                                <span class="text-4xl font-extrabold text-primary font-headline tracking-tight">
                                     {{$service->price}}MAD</span>
                                
                             </div>
@@ -224,16 +224,16 @@
                     </div>
                     <!-- Quick Actions -->
                     <div class="flex flex-col gap-4">
-                        <form action="{{ route('carts.add',$service) }}" method="POST">
+                        <form action="{{ route('client.carts.add',$service) }}" method="POST">
                             @csrf
                         <button type="submit"
                             class="w-full py-4 px-6 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl font-bold text-lg shadow-lg shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-3">
-                            Réserver ce service
+                            Ajouter au cart
                             <span class="material-symbols-outlined">bolt</span>
 
                         </button>
                         </form>
-                        <a href=" {{ route('services.index') }}"
+                        <a href=" {{ route('client.services.index') }}"
                             class="w-full py-4 px-6 bg-white text-on-surface border border-outline-variant/30 rounded-xl font-bold text-sm hover:bg-surface-container-low transition-all flex items-center justify-center gap-2">
                             <span class="material-symbols-outlined text-sm">west</span>
                             Retour aux services
