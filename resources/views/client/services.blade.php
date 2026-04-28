@@ -5,10 +5,8 @@
         class="fixed top-0 w-full z-50 glass-nav shadow-[0_12px_32px_rgba(18,28,40,0.06)] flex justify-between items-center px-6 py-3 w-full font-['Manrope'] antialiased tracking-tight">
 
         <div class="flex items-center gap-8">
-            <span class="material-symbols-outlined bg-primary-container shadow-lg shadow-primary-container text-white"
-                style="font-variation-settings: 'FILL' 1;">solar_power</span>
-            <span class="text-2xl font-black text-orange-600 dark:text-orange-500">SolarConnect</span>
-
+            <span class="material-symbols-outlined bg-primary-container shadow-lg shadow-primary-container text-white p-2 rounded-xl" style="font-variation-settings: 'FILL' 1;">solar_power</span>
+            <span class="text-2xl font-black text-primary">SolarConnect</span>
         </div>
         <div class="flex items-center gap-4">
             <button
@@ -48,6 +46,10 @@
                 href="{{ route('client.orders.index') }}">
                 <span class="material-symbols-outlined">list_alt</span>
                 Commandes
+            </a>
+             <a class="flex items-center gap-3 p-3 text-slate-600 hover:bg-orange-50 transition-all duration-300 rounded-lg" href="{{ route('client.reiews.index') }}">
+                <span class="material-symbols-outlined">rate_review</span>
+                Avis & Services
             </a>
             <a class="flex items-center gap-3 p-3 text-slate-600 hover:bg-orange-50 transition-all duration-300 rounded-lg"
                 href="{{ route('client.profile.show') }}">

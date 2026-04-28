@@ -40,6 +40,11 @@ public function orders()
         ->withTimestamps();
 }
 
+ public function Reviews()
+{
+    return $this->hasMany(Review::class); 
+}
+
 public function getDurationFormattedAttribute(): string
 {
     $minutes = $this->duree;

@@ -31,7 +31,7 @@ class LoginController extends Controller
          }
          if (Auth::user()->role->value === 'client') {
     
-           return redirect()->route('services.index')->with('succer','welkom back!');
+           return redirect()->route('client.services.index')->with('succer','welkom back!');
          }
          if (Auth::user()->role->value === 'admin') {
     

@@ -23,5 +23,6 @@ Route::prefix('client')->name('client.')->middleware('client')->group(function (
     Route::post('/orders/{order}', [OrderController::class, 'store'])->name('orders.store');
     Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
 
-    Route::post('/reviews', [ReviewController::class, 'store']);
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reiews.index');
+    Route::post('/reviews/{service}', [ReviewController::class, 'store'])->name('reiews.store');
 });

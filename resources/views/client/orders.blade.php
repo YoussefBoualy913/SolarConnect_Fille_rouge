@@ -107,11 +107,9 @@
         class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_12px_32px_rgba(18,28,40,0.06)] font-['Manrope'] antialiased tracking-tight">
         <nav class="flex justify-between items-center px-6 py-3 w-full max-w-7xl mx-auto">
             <div class="flex items-center gap-8">
-                <span class="material-symbols-outlined bg-primary-container shadow-lg shadow-primary-container text-white"
-                style="font-variation-settings: 'FILL' 1;">solar_power</span>
-                <span class="text-2xl font-black text-orange-600 dark:text-orange-500">SolarConnect</span>
-               
-            </div>
+            <span class="material-symbols-outlined bg-primary-container shadow-lg shadow-primary-container text-white p-2 rounded-xl" style="font-variation-settings: 'FILL' 1;">solar_power</span>
+            <span class="text-2xl font-black text-primary">SolarConnect</span>
+        </div>
             <div class="flex items-center gap-4">
                 <button
                     class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors active:scale-95 duration-200">
@@ -152,6 +150,10 @@
                 <span class="material-symbols-outlined">list_alt</span>
                 Commandes
             </a>
+             <a class="flex items-center gap-3 p-3 text-slate-600 hover:bg-orange-50 transition-all duration-300 rounded-lg" href="{{ route('client.reiews.index') }}">
+                <span class="material-symbols-outlined">rate_review</span>
+                Avis & Services
+            </a>
             <a class="flex items-center gap-3 p-3 text-slate-600 hover:bg-orange-50 transition-all duration-300 rounded-lg"
                 href="{{ route('client.profile.show') }}">
                 <span class="material-symbols-outlined" data-icon="person">person</span>
@@ -185,8 +187,9 @@
                         <thead>
                             <tr
                                 class="bg-surface-container-high/50 text-on-surface-variant text-xs font-bold uppercase tracking-widest">
-                                <th class="px-6 py-4">Commande</th>
+                                <th class="px-6 py-4">Services</th>
                                 <th class="px-6 py-4">Date</th>
+                               
                                 <th class="px-6 py-4">Prestataire</th>
                                 <th class="px-6 py-4 text-center">Statut</th>
                                 <th class="px-6 py-4 text-right">Montant</th>
@@ -197,19 +200,26 @@
                             <!-- Order Row 1 -->
                             @foreach ($orders as $order)
                                 <tr class="hover:bg-surface-container-low transition-colors group">
-                                    <td class="px-6 py-5">
+                                    <td class="px-6 py-5 flex flex-col gap-2">
+                                        @foreach ($order->services as $service)
+                                            
                                         <div class="flex items-center gap-4">
                                             <div
-                                                class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-primary">
-                                                <span class="material-symbols-outlined"
-                                                    data-icon="solar_power">solar_power</span>
-                                            </div>
-                                            <div>
-                                                <span
-                                                    class="block font-bold text-on-surface text-sm">{{ $order->name }}</span>
-
-                                            </div>
+                                            class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-primary">
+                                            <span class="material-symbols-outlined"
+                                            data-icon="solar_power">solar_power</span>
                                         </div>
+                                        <div>
+                                            <span
+                                            class="block font-bold text-on-surface text-sm">{{ $service->title }}</span>
+                                            <span
+                                            class="block font-bold text-on-surface text-sm">{{ $service->pivot->quantity }}</span>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    @endforeach
+                                       
                                     </td>
                                     <td class="px-6 py-5 text-sm text-on-surface-variant">{{ $order->created_at }}</td>
                                     <td class="px-6 py-5">
@@ -252,12 +262,7 @@
                                         {{ $order->total_price }} MAD</td>
                                     <td class="px-6 py-5">
                                         <div class="flex gap-2">
-                                            <button
-                                                class="p-2 text-blue-500 hover:bg-blue-500/10 rounded-lg transition-colors">
-                                                <span class="material-symbols-outlined">
-                                                    edit
-                                                </span>
-                                            </button>
+                                           
                                             <form action="{{ route('client.orders.destroy',$order) }}" method="POST">
                                                 @csrf
                                                 @method('delete')

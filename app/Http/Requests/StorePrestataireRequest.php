@@ -42,7 +42,7 @@ class StorePrestataireRequest extends FormRequest
         ],
 
        
-        'company_name' => ['nullable', 'string', 'max:255'],
+        'company_name' => ['required', 'string', 'max:255'],
 
 
         'cin' => [
