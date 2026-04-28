@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -14,10 +15,10 @@ class DashboardController extends Controller
       $prestataires  = User::with('prestataire.documents')->where('role','prestataire')
       ->whereHas('prestataire',function ($q) {
         $q->where('status','pending');
-      })->get();
+      })->paginate(5);
 
-      $users = User::all()->where('role','!=','admin');
+      $user = Auth::user();
 
-      return view('admin.dashboard',compact('prestataires','users'));
+      return view('admin.dashboard',compact('prestataires','user'));
    }
 }

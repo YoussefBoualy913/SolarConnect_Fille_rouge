@@ -23,16 +23,17 @@ class LoginController extends Controller
       ]);
      
      if(Auth::attempt($valid)){
+    
         $request->session()->regenerate();
-        if (Auth::user()->role === 'prestataire') {
+        if (Auth::user()->role->value === 'prestataire') {
     
            return redirect()->route('prestataire.dashboard')->with('succer','welkom back!');
          }
-         if (Auth::user()->role === 'client') {
+         if (Auth::user()->role->value === 'client') {
     
            return redirect()->route('services.index')->with('succer','welkom back!');
          }
-         if (Auth::user()->role === 'admin') {
+         if (Auth::user()->role->value === 'admin') {
     
            return redirect()->route('admin.dashboard')->with('succer','welkom back!');
          }
@@ -49,7 +50,7 @@ class LoginController extends Controller
           Auth::logout();
           $request->session()->invalidate();     
           $request->session()->regenerateToken();
-        //   return redirect()->route('home');
+          return redirect()->route('home');
       
     }
 }

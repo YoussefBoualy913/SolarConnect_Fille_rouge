@@ -21,7 +21,7 @@ class UserController extends Controller
 
     {
 
-
+   
     $search = trim($request->input('search'));
 
     $users = User::query()

@@ -14,7 +14,6 @@
 
         // Ouvrir le modal en mode AJOUT
         function openAddModal() {
-            currentEditId = null;
             modalTitle.innerText = "Ajouter une catégorie";
             categoryNameInput.value = "";
             modal.classList.remove('hidden');
