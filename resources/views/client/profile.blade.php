@@ -113,15 +113,21 @@
                 </nav>
             </div>
             <div class="flex items-center gap-4">
-                <button class="p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors">
-                    <span class="material-symbols-outlined">notifications</span>
-                </button>
-                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
-                    <img alt="User profile"
-                        data-alt="close-up portrait of a professional man in his 40s with a friendly smile, clean lighting, blurred office background"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4yvFqs07l_xr-aG5hfwzNrYf8jAvVWrBEwNEt1Q6vqXidg-hXNkyN0_Qab5f_WUthQopimXhahvwv0gg-aVpKtUMbF05bq3VGtyL_wcc6_uNslJpwMFRakyth6U72Trlr3vlUDMEiIykq9k6K2zhVntgwjMM9NYlSbYkQHrUzRmeUTca1WVjxW5ijwBgYxMINBz28RCTWWHkg6A0M1I5pVS4kRTbD4afqv5c9pAqz3ls4xqKWAr5tZxNN1ZwBlRfZSmppJ5o96xk" />
-                </div>
+            <button
+                class="p-2 text-slate-500 hover:bg-slate-100 transition-colors rounded-full active:scale-95 duration-200">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+             <div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+             <div class="text-right hidden sm:block">
+                     <p class="text-xs font-bold text-slate-900">{{Auth::user()->first_name." ".Auth::user()->last_name}}</p>
+                     <p class="text-[10px] text-slate-500">{{ Auth::user()->email }}</p>
+                 </div>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container">
+                <img alt="User profile"
+                    data-alt="Professional portrait of a male user with a friendly expression in a modern office setting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsbHOTLtnsz9j0LbFKo0bJflBA5717Aa3Uog3W61BX1GliuvYjcDSDINoW9TSdJwqvGAcLXglGbAYqE76VFLgp-kACJio6WGCRPk2S01KAh19nEWX3RwzplZlygILm0GBq0Lbw40DPrqs_AKPyZo6BGfb-2NWerTg1RqFC1ji7G2oMHl_SygbUZgBVBavLPGVp4m8ltmzMiL5rbIUhW9DJpo2vD4GXaM0Xl41FbWURRaH64mgiDc28qbwA1N7LWtTxWTGZ9xIbTjE" />
             </div>
+        </div>
         </div>
     </header>
     <main class="pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
@@ -135,14 +141,11 @@
                             data-alt="professional headshot of a smiling man with neat hair and a light blue shirt against a neutral studio background"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeHeJnglp7GFu4A-VfdcRHS71xUXvAVE8IQ_LDFxymXU2psWUc94Ax0E0rpttYYZMgRTB5Oh1afY9zU9pFOD02e6zYcqdXKy534Tx5qNDPdkep_nPVXrrmU9h0dKVfPluUDJXA9BhdgTSrJqC9hPQceWp-Pr6LlgE4VoZ53ejBuSOuR7er3JRTg1UnC8gchCYzCwbCc5y3jkU0w1dV5o_vcmVkx81EyHZ4RUrbW_boNplGFSV7w0XiCuXWs5zl8eHcs-NqcZWtncI" />
                     </div>
-                    <button
-                        class="absolute -bottom-2 -right-2 p-2 bg-primary text-on-primary rounded-lg shadow-md hover:scale-105 transition-transform">
-                        <span class="material-symbols-outlined text-sm">edit</span>
-                    </button>
+                   
                 </div>
                 <div class="flex-1">
                     <h1 class="text-4xl font-extrabold font-headline tracking-tight text-on-surface mb-1">{{$user->first_name}}</h1>
-                    <p class="text-on-surface-variant font-medium">Client Résidentiel • Membre depuis Janvier 2023</p>
+                    <p class="text-on-surface-variant font-medium">Client • Membre depuis Janvier {{$user->created_at->format('Y')}}</p>
                 </div>
                 <div class="flex gap-3">
                     <button
@@ -152,16 +155,10 @@
                 </div>
             </div>
             <!-- Tab Navigation -->
-            <div class="flex gap-8 border-b border-surface-variant/30">
-                <button class="pb-4 text-primary font-bold border-b-2 border-primary transition-colors">Informations
+            <div class="flex gap-8  border-surface-variant/30">
+                <button class="pb-4 text-primary font-bold  border-primary transition-colors">Informations
                     personnelles</button>
-                <button
-                    class="pb-4 text-on-surface-variant font-medium hover:text-on-surface transition-colors">Sécurité</button>
-                <button
-                    class="pb-4 text-on-surface-variant font-medium hover:text-on-surface transition-colors">Adresses
-                    d'installation</button>
-                <button
-                    class="pb-4 text-on-surface-variant font-medium hover:text-on-surface transition-colors">Préférences</button>
+               
             </div>
         </section>
         <!-- Bento Grid Layout for Content -->
@@ -170,18 +167,20 @@
             <div class="lg:col-span-8 space-y-8">
                 <div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_12px_32px_rgba(18,28,40,0.04)]">
                     <h2 class="text-xl font-bold font-headline mb-6">Détails du compte</h2>
-                    <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-6" action="{{ route('client.profile.update',$user) }}" method="POST">
+                        @csrf
+                        @method('patch')
                         <div class="space-y-2">
                             <label class="text-sm font-semibold text-on-surface-variant">Prénom</label>
                             <input
                                 class="w-full px-4 py-3 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all outline-none"
-                                type="text" value="Jean-Marc" />
+                                name="first_name" type="text" value="{{ $user->first_name }}" />
                         </div>
                         <div class="space-y-2">
                             <label class="text-sm font-semibold text-on-surface-variant">Nom</label>
                             <input
                                 class="w-full px-4 py-3 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all outline-none"
-                                type="text" value="Lefebvre" />
+                                name="last_name"  type="text" value="{{$user->last_name}}" />
                         </div>
                         <div class="space-y-2 md:col-span-2">
                             <label class="text-sm font-semibold text-on-surface-variant">Adresse email</label>
@@ -190,7 +189,7 @@
                                     class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-xl">mail</span>
                                 <input
                                     class="w-full pl-12 pr-4 py-3 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all outline-none"
-                                    type="email" value="jm.lefebvre@email.com" />
+                                     name="email" type="email" value="{{$user->email}}" />
                             </div>
                         </div>
                         <div class="space-y-2">
@@ -200,25 +199,22 @@
                                     class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 text-xl">call</span>
                                 <input
                                     class="w-full pl-12 pr-4 py-3 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all outline-none"
-                                    type="tel" value="+33 6 12 34 56 78" />
+                                    name="phone"   type="tel" value="{{$user->phone}}" />
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-on-surface-variant">Langue préférée</label>
-                            <select
-                                class="w-full px-4 py-3 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all outline-none appearance-none">
-                                <option selected="">Français</option>
-                                <option>English</option>
-                                <option>Deutsch</option>
-                            </select>
+                            <label class="text-sm font-semibold text-on-surface-variant">Ville</label>
+                            <input
+                                class="w-full px-4 py-3 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all outline-none"
+                                name="ville"  type="text" value="{{$user->ville}}" />
                         </div>
-                    </form>
-                    <div class="mt-10 flex justify-end">
-                        <button
+                        <div class="mt-10 flex justify-end">
+                            <button type="submit"
                             class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-3 rounded-xl font-bold shadow-lg active:scale-95 transition-all">
                             Enregistrer les modifications
                         </button>
                     </div>
+                </form>
                 </div>
                 <!-- Addresses Section -->
                 <div class="bg-surface-container-low p-8 rounded-xl">

@@ -80,7 +80,9 @@
                     <div class="flex-grow relative">
                         <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
                             data-icon="search">search</span>
-                        <input name="search"
+                        <input name="search" 
+                            value="{{ $search }}"
+                        
                             class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-slate-400"
                             placeholder="Rechercher un service (ex: Installation photovoltaïque)..." type="text" />
                     </div>

@@ -19,7 +19,7 @@ class ServiceController extends Controller
             });
         })
          ->paginate(4);
-         return view('client.services',compact('services'));
+         return view('client.services',compact('services','search'));
      } 
      
     public function show(Service $service)

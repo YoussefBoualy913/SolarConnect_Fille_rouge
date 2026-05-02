@@ -114,8 +114,8 @@
                                 <td class="text-on-surface-variant">{{$prestataire->ville}}</td>
                                 <td class="text-on-surface-variant">{{$prestataire->created_at}}</td>
                                 <td>
-                                    <a href="{{ route('admin.showCin',$prestataire->id)}}" target="_blank" class="badge-pending" disabled style="opacity:0.6; cursor:not-allowed;" title="Fonctionnalité disponible avec JavaScript"><span class="material-symbols-outlined">picture_as_pdf</span></a>
-                                    <a href="{{ route('admin.showCertificat',$prestataire->id)}}" target="_blank" class="badge-pending" disabled style="opacity:0.6; cursor:not-allowed;" title="Fonctionnalité disponible avec JavaScript"><span class="material-symbols-outlined">badge</span></a>
+                                    <a href="{{ route('admin.showCin',$prestataire->id)}}" target="_blank" class="badge-pending" disabled style="opacity:0.6; cursor:allowed;" title="Fonctionnalité disponible avec JavaScript"><span class="material-symbols-outlined">picture_as_pdf</span></a>
+                                    <a href="{{ route('admin.showCertificat',$prestataire->id)}}" target="_blank" class="badge-pending" disabled style="opacity:0.6; cursor:allowed;" title="Fonctionnalité disponible avec JavaScript"><span class="material-symbols-outlined">badge</span></a>
                                 </td>
                                 <td>
                                 <form action="{{ route('admin.approuver',$prestataire->id)}}" method="POST">

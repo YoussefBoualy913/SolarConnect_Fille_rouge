@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('client')->name('client.')->middleware('client')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
-    Route::put('/profile', [ProfileController::class, 'update']);
+    Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
     Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
