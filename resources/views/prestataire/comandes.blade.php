@@ -1,335 +1,227 @@
+
+
 @extends('layouts.prestataire')
 @vite('resources/js/prestataireService.js')
 @section('title', 'Gestion des Services | SolarGrid Pro')
 
-@section('search')
-    <div class="h-6 w-px bg-slate-200 mx-2"></div>
-    <div class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-1.5 gap-2">
-        <span class="material-symbols-outlined text-slate-400 text-sm" data-icon="search">search</span>
-        <input class="bg-transparent border-none focus:ring-0 text-sm w-64 placeholder:text-slate-400"
-            placeholder="Rechercher un service..." type="text" />
-    </div>
+
+
+@section('Services')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
 @endsection
 
-@section('content')
-    <div class="p-8 max-w-7xl mx-auto">
-        <!-- Header Section -->
-        <div class="flex justify-between items-end mb-10">
-            <div class="space-y-2">
-                <span class="text-primary font-headline font-bold text-sm tracking-widest uppercase">Espace
-                    Prestataire</span>
-                <h1 class="text-4xl font-headline font-black text-on-surface tracking-tight">Gestion des Services
-                </h1>
-                <p class="text-on-surface-variant max-w-xl">Configurez et gérez vos offres de solutions
-                    photovoltaïques. Ajoutez de nouveaux services pour étendre votre rayonnement.</p>
+@section('Dashboard')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('Reviews')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('Orders')
+flex items-center gap-3 px-3 py-2 text-orange-700 dark:text-orange-300 bg-white dark:bg-slate-900 rounded-lg shadow-sm font-manrope font-medium text-sm
+@endsection
+
+@section('Profile')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('content')        
+           
+           
+           
+           <header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                    <h1 class="text-4xl font-extrabold font-headline tracking-tight text-on-surface mb-2">Gestion des
+                        Commandes</h1>
+                    <p class="text-on-surface-variant max-w-md">Supervisez vos demandes d'installation et de maintenance
+                        solaire en temps réel.</p>
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="bg-surface-container-high text-primary px-5 py-2.5 rounded-xl font-semibold text-sm transition-transform active:scale-95">
+                        Exporter PDF
+                    </button>
+                   
+                </div>
+            </header>
+            <!-- Filters & Stats Bento -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                <div
+                    class="md:col-span-3 bg-surface-container-low rounded-2xl p-4 flex items-center gap-2 overflow-x-auto no-scrollbar">
+                    <button
+                        class="px-6 py-2 bg-white text-primary font-semibold rounded-lg shadow-sm text-sm whitespace-nowrap">Toutes</button>
+                    <button
+                        class="px-6 py-2 text-on-secondary-fixed-variant hover:bg-white/50 rounded-lg text-sm whitespace-nowrap transition-colors">Nouvelles
+                        (12)</button>
+                    <button
+                        class="px-6 py-2 text-on-secondary-fixed-variant hover:bg-white/50 rounded-lg text-sm whitespace-nowrap transition-colors">En
+                        cours (8)</button>
+                    <button
+                        class="px-6 py-2 text-on-secondary-fixed-variant hover:bg-white/50 rounded-lg text-sm whitespace-nowrap transition-colors">Terminées
+                        (45)</button>
+                    <div class="ml-auto flex items-center gap-4 px-4 border-l border-outline-variant/30">
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant cursor-pointer">filter_list</span>
+                        <span class="material-symbols-outlined text-on-surface-variant cursor-pointer">sort</span>
+                    </div>
+                </div>
+                <div class="bg-primary/5 rounded-2xl p-4 flex flex-col justify-center border border-primary/10">
+                    <p class="text-xs font-bold uppercase tracking-wider text-primary opacity-70">Revenu mensuel</p>
+                    <p class="text-2xl font-black text-on-surface">{{ $RevenueMensuel }} HD</p>
+                </div>
             </div>
-
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <!-- Service Form (As requested: New Service focus) -->
-            <section
-                class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/20 shadow-sm">
-                <div class="flex items-center gap-3 mb-8">
-                    <div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-primary" data-icon="edit_note">edit_note</span>
-                    </div>
-                    <h3 class="text-xl font-headline font-bold">Nouveau Service</h3>
-                </div>
-                <form  action="{{ route('prestataire.services.store') }}" method="POST" enctype="multipart/form-data"
-                class="space-y-6" >
-                @csrf
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Titre
-                                du service</label>
-                            <input
-                                class="w-full bg-surface-container-low border-none rounded-lg p-3 focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-slate-400"
-                                placeholder="ex: Installation Panneaux 6kW" name="title" type="text" />
-                             @error('title')
-                                      <p class="text-red-500">{{ $message }}</p>
-                             @enderror
-                        </div>
-                        <div class="space-y-2">
-                            <label
-                                class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Catégorie</label>
-                            <select name="category_id"
-                                class="w-full bg-surface-container-low border-none rounded-lg p-3 focus:ring-1 focus:ring-primary/20 transition-all text-on-surface-variant">
-                                <option value="">Choisir catégorie</option>
-                                @foreach ($categories as $category)
-                                    
-                                <option value="{{ $category->id }}" >{{ $category->name }}</option>
-                                @endforeach
-                                
-                            </select>
-                             @error('category_id')
-                                      <p class="text-red-500">{{ $message }}</p>
-                             @enderror
-                        </div>
-                    </div>
-                    <div class="space-y-2">
-                        <label
-                            class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Description</label>
-                        <textarea  name="description"
-                            class="w-full bg-surface-container-low border-none rounded-lg p-3 focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-slate-400"
-                            placeholder="Détaillez les spécificités techniques et les avantages de votre offre..." rows="4"></textarea>
-                         @error('description')
-                                      <p class="text-red-500">{{ $message }}</p>
-                         @enderror
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Prix
-                                estimé (€)</label>
-                            <div class="relative">
-                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold">€</span>
-                                <input  name="price"
-                                    class="w-full bg-surface-container-low border-none rounded-lg p-3 pl-8 focus:ring-1 focus:ring-primary/20 transition-all"
-                                    type="number" />
-                                 @error('price')
-                                      <p class="text-red-500">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">
-                                Durée estimée
-                            </label>
-
-                            <div class="flex gap-2">
-                                <!-- valeur -->
-                                <input type="number" name="duration_value" min="1"
-                                    class="w-1/2 bg-surface-container-low border-none rounded-lg p-3 focus:ring-1 focus:ring-primary/20 transition-all"
-                                    placeholder="ex: 2" />
-                                
-
-                                <!-- unité -->
-                                <select name="duration_unit"
-                                    class="w-1/2 bg-surface-container-low border-none rounded-lg p-3 focus:ring-1 focus:ring-primary/20 transition-all">
-                                    <option value="minutes">Minutes</option>
-                                    <option value="hours">Heures</option>
-                                    <option value="days">Jours</option>
-                                </select>
-                            </div>
-                            @error('duration_value')
-                            <p class="text-red-500">{{ $message }}</p>
-                            @enderror
-                            @error('duration_unit')
-                                 <p class="text-red-500">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">
-                            Image
-                        </label>
-
-                        <!-- Upload container -->
-                        <label id="uploadBox"
-                            class="aspect-square w-40 rounded-xl border-2 border-dashed border-outline-variant/40 
-                                    flex flex-col items-center justify-center gap-2 text-on-surface-variant 
-                                     hover:border-primary/40 hover:bg-primary/5 cursor-pointer transition-all">
-
-                            <input type="file" name="image" accept="image/*" class="hidden" id="imageInput">
-                            
-                            <span class="material-symbols-outlined text-3xl">add_a_photo</span>
-                            <span class="text-[10px] font-bold uppercase">Ajouter</span>
-                        </label>
-
-                        <!-- Preview -->
-                        <div id="preview" class="hidden aspect-square w-40 rounded-xl overflow-hidden relative group">
-                            <img id="previewImg" class="w-full h-full object-cover" />
-
-                            <div
-                                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                                <button type="button" id="removeImage" class="text-white">
-                                    <span class="material-symbols-outlined">delete</span>
-                                </button>
-                            </div>
-                        </div>
-                         @error('image')
-                                      <p class="text-red-500">{{ $message }}</p>
-                         @enderror
-
-                    </div>
-                    <div class="pt-6 flex gap-4">
-
-                        <button
-                            class="flex-1 py-4 rounded-xl font-headline font-bold text-on-primary bg-primary hover:bg-primary-fixed-variant transition-colors shadow-lg"
-                            type="submit">Publier le Service</button>
-                    </div>
-                </form>
-            </section>
-            <!-- Active Services List -->
-            <section class="lg:col-span-5 space-y-6">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-xl font-headline font-bold">Services Actifs</h3>
-                    <span class="text-xs font-bold bg-secondary-container text-on-secondary-container px-2 py-1 rounded">{{$user->services->count() }}</span>
-                </div>
-                <!-- Service Card 1 -->
-                @foreach ($user->services as $service )
-                    @if ($service->status  === "active")
-                        
-                    
+            <!-- Orders Table / List -->
+            <div class="space-y-4">
+                <!-- Order Item 1 -->
+                @foreach ($orders as  $order)
+                 @if ($order->status === "pending")
+                     
+                 <div
+                 class="group bg-surface-container-lowest rounded-2xl p-6 transition-all hover:shadow-xl hover:shadow-slate-200/50 flex flex-col lg:flex-row lg:items-center gap-6 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-tertiary-container"></div>
+                <div class="flex-1 flex flex-col md:flex-row md:items-center gap-6">
                     <div
-                class="bg-surface-container-low rounded-xl p-5 group hover:bg-surface-container transition-colors duration-300">
-                <div class="flex gap-4">
-                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
-                        @if($service->image_url)
-                        <img alt="{{ $service->title }}" class="w-full h-full object-cover"
-                        data-alt="modern solar array on a suburban house roof reflecting a bright golden sunset"
-                        src="{{ asset('storage/' . $service->image_url)}}" />
-                        @else
-                         <div
-                            class="w-20 h-20 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0">
-                            <span class="material-symbols-outlined text-slate-400" data-icon="image">image</span>
-                        </div>
-                        @endif
-
-
-                    </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex justify-between items-start mb-1">
-                                <h4 class="font-headline font-bold text-on-surface truncate">{{$service->title}}</h4>
-                                    <button
-                                    class="flex items-center gap-1 text-[10px] font-bold text-tertiary uppercase bg-tertiary-fixed px-1.5 py-0.5 rounded">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> Active
-                                </button>
+                    class="h-14 w-14 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-primary text-3xl">solar_power</span>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-1">
+                        <h3 class="font-bold text-lg text-on-surface">{{$order->client->first_name." ".$order->client->last_name}}</h3>
+                                <span
+                                class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-black uppercase tracking-widest rounded-full">NOUVEAU</span>
                             </div>
-                            <p class="text-xs text-on-surface-variant line-clamp-2 mb-3">{{$service->description}}</p>
-                                <div class="flex items-center gap-4 text-xs font-medium text-secondary">
-                                <span class="flex items-center gap-1"><span class="text-sm font-semibold">MAD</span>
-                                    8,400</span>
-                                    <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm"
-                                            data-icon="schedule">schedule</span>{{$service->duration_formatted}}</span>
-                                        </div>
+                            <p class="text-sm text-on-surface-variant font-medium">{{$order->name}}</p>
+                            <div class="flex items-center gap-4 mt-2 text-xs text-on-surface-variant/70">
+                                <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-sm">calendar_month</span>{{ ucfirst($order->created_at->translatedFormat('d F Y')) }}</span>
+                                    <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">location_on</span>{{$order->client->ville}}</span>
                                     </div>
                                 </div>
-                     <div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-end gap-2">
-                        <button
-                           onclick='openEditModal(@json($service))'
-                            class="text-[10px] font-bold uppercase tracking-wider text-primary hover:underline">update</button>
-                      
-                        <form action="{{ route('prestataire.services.destroy',$service->id) }}" method="POST" >
-                         @csrf
-                         @method('delete')
-                         <button
-                            class="text-[10px] font-bold uppercase tracking-wider text-red-500 hover:text-red-600 hover:underline transition-colors">delete</button>
-                        </form>
-                    </div>
-                    
-                    </div>
-         
-                         @endif
-                    @if ($service->status === "inactive")
-                   <div class="bg-surface-container-low/50 rounded-xl p-5 border border-dashed border-outline-variant/40">
-                    <div class="flex gap-4 opacity-70">
-                       <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
-                        @if($service->image_url)
-                        <img alt="{{ $service->title }}" class="w-full h-full object-cover"
-                        data-alt="modern solar array on a suburban house roof reflecting a bright golden sunset"
-                        src="{{ asset('storage/' . $service->image_url)}}" />
-                        @else
-                         <div
-                            class="w-20 h-20 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0">
-                            <span class="material-symbols-outlined text-slate-400" data-icon="image">image</span>
-                        </div>
-                        @endif
-
-
-                    </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex justify-between items-start mb-1">
-                                <h4 class="font-headline font-bold text-on-surface truncate">{{ $service->title }}
-                                </h4>
-                                <button
-                                    class="text-[10px] font-bold text-on-surface-variant uppercase bg-surface-container-high px-1.5 py-0.5 rounded">
-                                    Désactive
-                                </button>
                             </div>
-                            <p class="text-xs text-on-surface-variant line-clamp-2 mb-3">{{ $service->description }}
-
+                            <div
+                            class="flex flex-col items-start lg:items-end gap-1 px-4 lg:border-x border-outline-variant/20">
+                            <p class="text-xs text-on-surface-variant">Montant Total</p>
+                            <p class="text-xl font-bold text-on-surface">{{ $order->total_price}} HD</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <form action="{{ route('prestataire.orders.accepter',$order) }}" method="POST">
+                                @csrf
+                            <button type="submit"
+                            class="bg-primary/10 text-primary px-4 py-2 rounded-xl text-sm font-bold hover:bg-primary hover:text-white transition-all scale-95 active:scale-90">Accepter</button>
+                            </form>
+                              <form action="{{ route('prestataire.orders.refuser',$order) }}" method="POST">
+                                @csrf
+                            <button
+                            class="bg-error/5 text-error px-4 py-2 rounded-xl text-sm font-semibold hover:bg-error/10 transition-all scale-95 active:scale-90">Refuser</button>
+                            </form>
+                            <button
+                            class="p-2 bg-surface-container-high text-on-surface-variant rounded-xl hover:bg-primary-container/20 transition-all">
+                            <span class="material-symbols-outlined">chat_bubble</span>
+                        </button>
+                    </div>
+                </div>
+                @endif
+                @if ($order->status === "confirmed")
+                     <div
+                    class="group bg-surface-container-lowest rounded-2xl p-6 transition-all hover:shadow-xl hover:shadow-slate-200/50 flex flex-col lg:flex-row lg:items-center gap-6 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+                    <div class="flex-1 flex flex-col md:flex-row md:items-center gap-6">
+                        <div
+                            class="h-14 w-14 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary text-3xl">build</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-bold text-lg text-on-surface">{{$order->client->first_name." ".$order->client->last_name}}</h3>
+                                <span
+                                    class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-black uppercase tracking-widest rounded-full">EN
+                                    COURS</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant font-medium">Maintenance Annuelle &amp; Nettoyage
                             </p>
-                            <div class="flex items-center gap-4 text-xs font-medium text-secondary">
-                                <span class="flex items-center gap-1"><span class="text-sm font-semibold">MAD</span>
-                                    1,200
-                                </span>
-                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm"
-                                        data-icon="schedule">schedule</span> 1 jour</span>
+                            <div class="flex items-center gap-4 mt-2 text-xs text-on-surface-variant/70">
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">calendar_month</span> {{ ucfirst($order->created_at->translatedFormat('d F Y')) }}</span>
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">location_on</span>{{$order->client->ville}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-end gap-2">
-                        <button
-                           onclick='openEditModal(@json($service))'
-                            class="text-[10px] font-bold uppercase tracking-wider text-primary hover:underline">update</button>
-                        <form action="{{ route('prestataire.services.destroy',$service->id) }}" method="POST" >
-                         @csrf
-                         @method('delete')
-                            <button  type="submit"
-                            class="text-[10px] font-bold uppercase tracking-wider text-red-500 hover:text-red-600 hover:underline transition-colors">delete</button>
+                    <div
+                        class="flex flex-col items-start lg:items-end gap-1 px-4 lg:border-x border-outline-variant/20">
+                        <p class="text-xs text-on-surface-variant">Montant Total</p>
+                        <p class="text-xl font-bold text-on-surface">{{$order->total_price}}HD</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <form action="{{ route('prestataire.orders.terminer',$order) }}" method="POST">
+                            @csrf
+                        <button type="submit"
+                            class="bg-primary text-on-primary px-4 py-2 rounded-xl text-sm font-bold hover:shadow-md transition-all scale-95 active:scale-90">Marquer
+                            comme terminé</button>
                         </form>
+                        <button
+                            class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-xl text-sm font-semibold transition-all scale-95 active:scale-90">Contacter
+                            le client</button>
                     </div>
                 </div>
-                         @endif
-                 @endforeach ()
-               
-              
-                <!-- Summary Stats Card -->
+                @endif
 
-            </section>
-        </div>
-    </div>
-@endsection
-@section('popup')
- {{-- EDIT MODAL  --}}
-<div id="editModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
-    
-    <div class="bg-white w-full max-w-2xl rounded-xl p-6 relative">
-        
-         {{-- Close --}}
-        <button onclick="closeEditModal()" class="absolute top-4 right-4 text-gray-500">
-            ✕
-        </button>
-
-        <h3 class="text-xl font-bold mb-6">Modifier Service</h3>
-
-        <form id="editForm" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-
-            <div class="space-y-4">
-                
-                <input type="text" name="title" id="editTitle"
-                    class="w-full p-3 rounded-lg border"
-                    placeholder="Titre">
-
-                <textarea name="description" id="editDescription"
-                    class="w-full p-3 rounded-lg border"
-                    placeholder="Description"></textarea>
-
-                <input type="number" name="price" id="editPrice"
-                    class="w-full p-3 rounded-lg border"
-                    placeholder="Prix">
-
-                <div class="flex gap-2">
-                    <input type="number" name="duration_value" id="editDurationValue"
-                        class="w-1/2 p-3 rounded-lg border">
-
-                    <select name="duration_unit" id="editDurationUnit"
-                        class="w-1/2 p-3 rounded-lg border">
-                        <option value="minutes">Minutes</option>
-                        <option value="hours">Heures</option>
-                        <option value="days">Jours</option>
-                    </select>
+                 @if ($order->status === "finished")
+                   <div
+                    class="group bg-surface-container-lowest rounded-2xl p-6 transition-all hover:shadow-xl hover:shadow-slate-200/50 flex flex-col lg:flex-row lg:items-center gap-6 opacity-80 grayscale-[0.2]">
+                    <div class="flex-1 flex flex-col md:flex-row md:items-center gap-6">
+                        <div
+                            class="h-14 w-14 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+                            <span
+                                class="material-symbols-outlined text-on-surface-variant text-3xl">check_circle</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-bold text-lg text-on-surface">{{$order->client->first_name." ".$order->client->last_name}}</h3>
+                                <span
+                                    class="px-3 py-1 bg-surface-container-high text-on-secondary-container text-[10px] font-black uppercase tracking-widest rounded-full">TERMINÉE</span>
+                            </div>
+                            <p class="text-sm text-on-surface-variant font-medium">{{$order->name}}</p>
+                            <div class="flex items-center gap-4 mt-2 text-xs text-on-surface-variant/70">
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">calendar_month</span> {{ ucfirst($order->created_at->translatedFormat('d F Y')) }}</span>
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-sm">location_on</span>{{$order->client->ville}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col items-start lg:items-end gap-1 px-4 lg:border-x border-outline-variant/20">
+                        <p class="text-xs text-on-surface-variant">Montant Total</p>
+                        <p class="text-xl font-bold text-on-surface">{{$order->total_price}}HD</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button
+                            class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-xl text-sm font-semibold transition-all scale-95 active:scale-90">Voir
+                            facture</button>
+                        <button
+                            class="p-2 bg-surface-container-high text-on-surface-variant rounded-xl hover:bg-primary-container/20 transition-all">
+                            <span class="material-symbols-outlined">more_vert</span>
+                        </button>
+                    </div>
                 </div>
+                    
+                @endif
 
-                <button type="submit"
-                    class="w-full bg-primary text-white py-3 rounded-lg">
-                    Mettre à jour
-                </button>
-
+            @endforeach
+               
             </div>
-        </form>
+            <!-- Pagination or Load More -->
+            <div class="mt-12 flex justify-center">
+                <button
+                    class="group flex items-center gap-2 text-on-surface-variant font-semibold hover:text-primary transition-colors">
+                    Charger plus de commandes
+                    <span
+                        class="material-symbols-outlined transition-transform group-hover:translate-y-1">expand_more</span>
+                </button>
+            </div>
+        </main>
     </div>
-</div>
-@endsection
+   @endsection

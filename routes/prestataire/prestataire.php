@@ -15,7 +15,10 @@ Route::prefix('prestataire')->name('prestataire.')->middleware('prestataire')->g
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::resource('services', ServiceController::class);
-    Route::resource('orders', OrderController::class);
+    Route::get('orders', [OrderController::class,'index'])->name('orders.index');
+    Route::post('orders/accepter/{order}', [OrderController::class,'accepter'])->name('orders.accepter');
+    Route::post('orders/refuser/{order}', [OrderController::class,'refuser'])->name('orders.refuser');
+    Route::post('orders/terminer/{order}', [OrderController::class,'terminer'])->name('orders.terminer');
     Route::resource('avis', AvisController::class)->only(['index']);
 
 });

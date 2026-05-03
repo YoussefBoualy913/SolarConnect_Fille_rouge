@@ -232,17 +232,23 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-5 text-center">
-                                        @if ($order->status === 'confirmed')
+                                        @if ($order->status === 'finished')
                                             <span
                                                 class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-green-100 text-green-700">
                                                 <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
                                                 Terminé
                                             </span>
-                                        @elseif ($order->status === 'pending')
+                                        @elseif ($order->status === 'confirmed')
                                             <span
                                                 class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-orange-100 text-orange-700">
                                                 <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
                                                 En cours
+                                            </span>
+                                        @elseif ($order->status === 'pending')
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-500">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-blue-300"></span>
+                                                en attent
                                             </span>
                                         @elseif ($order->status === 'rejected')
                                             <span
