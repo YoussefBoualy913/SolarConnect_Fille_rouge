@@ -69,4 +69,9 @@ public function getDurationFormattedAttribute(): string
 
     return implode(' ', $parts);
 }
+
+public function getAvgRatingAttribute()
+{
+    return round($this->reviews()->avg('rating') ?? 0, 2);
+}
 }

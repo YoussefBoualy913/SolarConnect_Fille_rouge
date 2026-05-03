@@ -109,49 +109,43 @@
 
 <body class="bg-surface text-on-surface">
     <!-- TopNavBar -->
-    <header  class="w-full sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none h-16 flex justify-between items-center px-6">
-       <div class="flex items-center gap-4">
-              
-               <div class="flex items-center gap-8">
-                   <span class="text-xl font-black text-slate-900 dark:text-white font-manrope tracking-tight">SolarGrid
-                       Pro</span>
-                       <div class="hidden md:flex gap-6 items-center">
-                           <nav class="flex gap-6">
-                               <a class="text-slate-500 dark:text-slate-400 hover:text-orange-600 transition-colors font-medium text-sm"
-                               href="#">Tableau de bord</a>
-                               <a class="text-slate-500 dark:text-slate-400 hover:text-orange-600 transition-colors font-medium text-sm"
-                               href="#">Services</a>
-                               <a class="text-orange-600 dark:text-orange-400 font-semibold text-sm" href="#">Profil</a>
-                            </nav>
-                        </div>
+    <header
+        class="w-full sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none h-16 flex justify-between items-center px-6">
+        <div class="flex items-center gap-4">
+
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-8">
+                    <span
+                        class="material-symbols-outlined bg-primary-container shadow-lg shadow-primary-container text-white p-2 rounded-xl"
+                        style="font-variation-settings: 'FILL' 1;">solar_power</span>
+                    <span class="text-2xl font-black text-primary">SolarConnect</span>
                 </div>
-               @yield('search')
+
             </div>
-            <div class="flex items-center gap-4">
-                <button
-                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-500">
-                    <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-                </button>
-                <button
-                    class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-500">
-                    <span class="material-symbols-outlined" data-icon="help">help</span>
-                </button>
-                 <div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
-                <div class="flex items-center gap-3 pl-2">
-                    <div class="text-right hidden sm:block">
-                        <p class="text-xs font-bold text-slate-900">{{$user->first_name}}</p>
-                        <p class="text-[10px] text-slate-500">{{$user->email}}</p>
-                    </div>
-                     <div class="flex -space-x-2">
-                                  
-                                         <div
-                                        class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-600 to-amber-400 flex items-center justify-center text-white text-xs font-bold border-2 border-white">
-                                        {{$user->initials}}</div>
-                                        
-                                       
-                    </div>
-               </div>
+            @yield('search')
+        </div>
+        <div class="flex items-center gap-4">
+            <button
+                class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-500">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <button
+                class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-500">
+                <span class="material-symbols-outlined" data-icon="help">help</span>
+            </button>
+            <div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+            <div class="flex items-center gap-3 pl-2">
+                <div class="text-right hidden sm:block">
+                    <p class="text-xs font-bold text-slate-900">{{ $user->first_name }}</p>
+                    <p class="text-[10px] text-slate-500">{{ $user->email }}</p>
+                </div>
+               <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container">
+                <img alt="User profile"
+                    data-alt="Professional portrait of a male user with a friendly expression in a modern office setting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdv2wuVjxd8NPkdzz6X6SaIQF2_XhvLR8A-hhzuu8E0-sdJwyT8vKjUopNwz8SSGQpBwnL1M4veCnt8QKWPFQkyifoWeOnuV32_kkX-G3T4Cwgzi2ol70kyrpYv32m2wkKwh_Kv5RghjaBbqE61amSpSq_fqzs9GYJy4kkL7EdqnpJIrPz1OvZI4_yFrgHqz4Xs_4roH5izKz9xamzRPCJVoll3QvzgEsB-ZopektVG1saZxqqO-ps3_NvtSQIE_OXiGZJfQi4jho" />
             </div>
+            </div>
+        </div>
     </header>
     <div class="flex min-h-screen">
         <!-- SideNavBar -->
@@ -162,35 +156,36 @@
                 <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Premium Tier</p>
             </div>
             <nav class="flex flex-col gap-1">
-                <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm"
-                    href="#">
+                <a class="@yield('Dashboard')"
+                    href="{{ route('prestataire.dashboard') }}">
                     <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                     Dashboard
                 </a>
-                <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm"
-                    href="#">
+                <a class="@yield('Services')"
+                    href="{{ route('prestataire.services.index') }}">
                     <span class="material-symbols-outlined" data-icon="bolt">bolt</span>
                     Services
                 </a>
-                <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm"
-                    href="#">
+                <a class="@yield('Orders')"
+                    href="{{ route('prestataire.orders.index') }}">
                     <span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
                     Orders
                 </a>
-                <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm"
-                    href="#">
+                <a class="@yield('Reviews')"
+                    href="{{ route('prestataire.avis.index') }}">
                     <span class="material-symbols-outlined" data-icon="rate_review">rate_review</span>
                     Reviews
                 </a>
-                <a class="flex items-center gap-3 px-3 py-2 text-orange-700 dark:text-orange-300 bg-white dark:bg-slate-900 rounded-lg shadow-sm font-manrope font-medium text-sm"
-                    href="#">
+                <a class="@yield('Profile')"
+                    href="{{ route('prestataire.profile.show') }}">
                     <span class="material-symbols-outlined" data-icon="person">person</span>
                     Profile
                 </a>
-              
+                
+
             </nav>
             <div class="mt-[66%] flex flex-col gap-1">
-               
+
                 <a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 transition-all font-manrope font-medium text-sm"
                     href="{{ route('logout') }}">
                     <span class="material-symbols-outlined" data-icon="logout">logout</span>
@@ -200,9 +195,9 @@
         </aside>
         <!-- Main Content Area -->
         <main class="flex-1 md:ml-64 p-6 lg:p-10 bg-surface">
-             
-               @yield('content')           
-            
+
+            @yield('content')
+
         </main>
     </div>
     <!-- Mobile Bottom Navigation -->
@@ -221,7 +216,7 @@
                 style="font-variation-settings: 'FILL' 1;">person</span>
             <span class="text-[10px] font-bold uppercase">Profil</span>
         </button>
-       
+
     </nav>
 
     @yield('popup')

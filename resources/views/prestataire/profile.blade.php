@@ -42,6 +42,26 @@
                </div>
         </div>       
 @endsection
+
+@section('Services')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('Dashboard')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('Reviews')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('Orders')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('Profile')
+flex items-center gap-3 px-3 py-2 text-orange-700 dark:text-orange-300 bg-white dark:bg-slate-900 rounded-lg shadow-sm font-manrope font-medium text-sm
+@endsection
  
 @section('content')
 
@@ -63,7 +83,7 @@
             </div>
             <!-- Bento Grid Layout for Management -->
                 <!-- Main Form Column -->
-                <form  action="{{ route('prestataire.update') }}" method="POST"
+                <form  action="{{ route('prestataire.profile.update') }}" method="POST"
                 class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 @csrf
                 @method('PATCH')

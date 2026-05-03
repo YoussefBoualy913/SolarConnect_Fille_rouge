@@ -22,7 +22,7 @@ class ServiceController extends Controller
       
         $user = Auth::user()->load('services');
         $categories = Category::all();
-        return view('prestataire.service',compact('user','categories'));
+        return view('prestataire.services',compact('user','categories'));
     }
 
     /**

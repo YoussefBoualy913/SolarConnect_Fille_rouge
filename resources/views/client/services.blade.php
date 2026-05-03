@@ -190,7 +190,7 @@
                                         <div class="flex items-center gap-1">
                                             <span class="material-symbols-outlined text-tertiary-container text-sm"
                                                 data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="font-bold text-sm">4.8</span>
+                                            <span class="font-bold text-sm">{{$service->avg_rating}}</span>
                                         </div>
                                         <a href="{{ route('client.services.show', $service->id) }}"
                                             class="text-primary font-bold text-sm hover:underline">Voir dispo</a>

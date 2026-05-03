@@ -11,6 +11,27 @@
     </div>
 @endsection
 
+@section('Services')
+flex items-center gap-3 px-3 py-2 text-orange-700 dark:text-orange-300 bg-white dark:bg-slate-900 rounded-lg shadow-sm font-manrope font-medium text-sm
+@endsection
+
+@section('Dashboard')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('Reviews')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('Orders')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+@section('Profile')
+flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-orange-600 hover:translate-x-1 transition-all font-manrope font-medium text-sm
+@endsection
+
+
 @section('content')
     <div class="p-8 max-w-7xl mx-auto">
         <!-- Header Section -->
