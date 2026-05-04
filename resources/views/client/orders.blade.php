@@ -248,7 +248,7 @@
                                             <span
                                                 class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-500">
                                                 <span class="w-1.5 h-1.5 rounded-full bg-blue-300"></span>
-                                                en attent
+                                                En attente
                                             </span>
                                         @elseif ($order->status === 'rejected')
                                             <span

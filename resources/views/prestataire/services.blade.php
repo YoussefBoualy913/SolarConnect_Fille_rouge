@@ -100,9 +100,9 @@ flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Prix
-                                estimé (€)</label>
+                                estimé (MAD)</label>
                             <div class="relative">
-                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold">€</span>
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold">HD</span>
                                 <input  name="price"
                                     class="w-full bg-surface-container-low border-none rounded-lg p-3 pl-8 focus:ring-1 focus:ring-primary/20 transition-all"
                                     type="number" />

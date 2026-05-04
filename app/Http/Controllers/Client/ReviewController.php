@@ -16,6 +16,7 @@ class ReviewController extends Controller
      $reviews = Auth::user()->clientReviews()->with('service.prestataire.user')->get();
     $services = Service::whereHas('orders', function ($q) {
         $q->where('client_id', Auth::user()->id);
+        $q->where('status', 'finished');
     })
     ->whereDoesntHave('reviews', function ($q) {
         $q->where('client_id', Auth::user()->id);
@@ -37,14 +38,4 @@ class ReviewController extends Controller
          ]);
          return redirect()->back()->with('message','rating ajouter avec succer');
       } 
-
-    public function update($id)
-     {
-
-     }
-
-    public function destroy($id)
-     {
-        
-     }
 }

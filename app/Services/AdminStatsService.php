@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\Service;
 use App\Models\User;
 
-class UserStatsService
+class AdminStatsService
 {
     public function getStats(): array
     {
@@ -14,7 +14,7 @@ class UserStatsService
 
            'prestataires' => User::where('role', 'prestataire')
            ->whereHas('prestataire', function ($q) {
-            $q->where('status', 'approved');
+            $q->where('type', 'approved');
            })->count(),
 
             'services' => Service::where('status', 'active')->count(),

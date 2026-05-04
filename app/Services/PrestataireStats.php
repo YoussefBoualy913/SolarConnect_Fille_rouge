@@ -16,6 +16,7 @@ class PrestataireStats
             $totalRevenue = Order::where('prestataire_id', Auth::user()->prestataire->id)
             ->whereMonth('created_at', Carbon::now()->month)
             ->whereYear('created_at', Carbon::now()->year)
+            ->where('status','finished')
            ->sum('total_price');
            $orderspending = Order::where('prestataire_id', Auth::user()->prestataire->id)
                              ->where('status','pending')
@@ -28,6 +29,7 @@ class PrestataireStats
 
             $Nouveauxleads = Order::whereMonth('created_at', now()->month)
                      ->whereYear('created_at', now()->year)
+                     ->where('status','pending')
                      ->distinct('client_id')
                      ->count('client_id');
 

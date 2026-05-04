@@ -217,11 +217,17 @@
               Categories
            </x-span-link-name>
         </x-nav-link>
+
+         <x-nav-link href="{{ route('admin.profile.show') }}" active="admin.profile.show">
+           <x-span-link icon="person">
+              person
+           </x-span-link>
+           <x-span-link-name >
+              Profile
+           </x-span-link-name>
+        </x-nav-link>
       
-        <a class="flex items-center text-slate-500 dark:text-slate-400 px-10 py-3 hover:text-orange-500 dark:hover:text-orange-300 transition-all translate-x-1 hover:translate-x-2 transition-transform font-headline font-bold text-lg" href="#">
-            <span class="material-symbols-outlined mr-4" data-icon="rate_review">rate_review</span>
-            <span>Reviews</span>
-        </a>
+       
         
     </nav>
     <div class="px-8 mt-auto pt-8 border-t border-slate-200/10">

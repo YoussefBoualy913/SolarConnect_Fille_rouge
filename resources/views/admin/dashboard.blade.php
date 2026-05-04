@@ -23,7 +23,7 @@
                     <div class="p-3 bg-orange-50 rounded-lg text-primary group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
                     </div>
-                    <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-md">+12.5%</span>
+                   
                 </div>
                 <p class="text-sm font-medium text-on-surface-variant">Services actif</p>
                 <h3 class="font-headline text-2xl font-black text-on-surface mt-1">{{$stats['services']}}</h3>
@@ -33,7 +33,7 @@
                     <div class="p-3 bg-blue-50 rounded-lg text-blue-600 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined" data-icon="person_add" style="font-variation-settings: 'FILL' 1;">person_add</span>
                     </div>
-                    <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-md">+8.2%</span>
+                   
                 </div>
                 <p class="text-sm font-medium text-on-surface-variant">Nouveaux Utilisateurs</p>
                 <h3 class="font-headline text-2xl font-black text-on-surface mt-1">{{$prestataires->total()}}</h3>
@@ -53,7 +53,7 @@
                     <div class="p-3 bg-purple-50 rounded-lg text-purple-600 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-outlined" data-icon="ads_click" style="font-variation-settings: 'FILL' 1;">ads_click</span>
                     </div>
-                    <span class="text-xs font-bold text-error bg-error-container px-2 py-1 rounded-md"></span>
+                   
                 </div>
                 <p class="text-sm font-medium text-on-surface-variant">Clients</p>
                 <h3 class="font-headline text-2xl font-black text-on-surface mt-1">{{$stats['clients']}}</h3>

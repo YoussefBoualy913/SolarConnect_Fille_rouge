@@ -49,7 +49,7 @@ flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-
                         <div class="p-3 bg-primary-container/10 rounded-lg text-primary">
                             <span class="material-symbols-outlined" data-icon="payments">payments</span>
                         </div>
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">+12%</span>
+                       
                     </div>
                     <div class="mt-4">
                         <p class="text-label-sm text-on-surface-variant font-medium">Revenu ce mois</p>
@@ -76,7 +76,7 @@ flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-
                             <span class="material-symbols-outlined" data-icon="star"
                                 style="font-variation-settings: 'FILL' 1;">star</span>
                         </div>
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">4.9/5</span>
+                       
                     </div>
                     <div class="mt-4">
                         <p class="text-label-sm text-on-surface-variant font-medium">Note moyenne</p>
@@ -89,7 +89,7 @@ flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-
                         <div class="p-3 bg-orange-100 rounded-lg text-orange-700">
                             <span class="material-symbols-outlined" data-icon="person_add">person_add</span>
                         </div>
-                        <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-full">+5</span>
+                       
                     </div>
                     <div class="mt-4">
                         <p class="text-label-sm text-on-surface-variant font-medium">Nouveaux leads</p>

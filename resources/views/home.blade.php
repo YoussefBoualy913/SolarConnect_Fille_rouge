@@ -47,12 +47,12 @@
         class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
-                <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2">
                     <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
                         <span class="material-symbols-outlined">solar_power</span>
                     </div>
                     <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">SolarConnect</span>
-                </div>
+                </div>  
                 <nav class="hidden md:flex items-center gap-8">
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="#how-it-works">Comment ça
                         marche</a>
