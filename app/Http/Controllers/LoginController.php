@@ -26,8 +26,16 @@ class LoginController extends Controller
     
         $request->session()->regenerate();
         if (Auth::user()->role->value === 'prestataire') {
-    
-           return redirect()->route('prestataire.dashboard')->with('succer','welkom back!');
+
+            if(Auth::user()->prestataire->type === "pending")
+              {
+                return redirect()->route('prestataire.attend');
+              }
+              if(Auth::user()->prestataire->type === "approved")
+                {
+
+                  return redirect()->route('prestataire.dashboard')->with('succer','welkom back!');
+                }
          }
          if (Auth::user()->role->value === 'client') {
     

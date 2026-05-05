@@ -19,6 +19,6 @@ class ProfileController extends Controller
     {
        
        $updatePrestataireRequest->validated();
-       dd($updatePrestataireRequest);
+      
     }
 }

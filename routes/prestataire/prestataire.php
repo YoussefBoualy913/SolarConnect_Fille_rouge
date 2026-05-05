@@ -10,11 +10,14 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('prestataire')->name('prestataire.')->middleware('prestataire')->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('attend', [DashboardController::class, 'attend'])->name('attend');
 
     Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::resource('services', ServiceController::class);
+    Route::patch('services/activer/{service}', [ServiceController::class,'activer'])->name('services.activer');
+    Route::patch('services/inactiver/{service}', [ServiceController::class,'inactiver'])->name('services.inactiver');
     Route::get('orders', [OrderController::class,'index'])->name('orders.index');
     Route::post('orders/accepter/{order}', [OrderController::class,'accepter'])->name('orders.accepter');
     Route::post('orders/refuser/{order}', [OrderController::class,'refuser'])->name('orders.refuser');

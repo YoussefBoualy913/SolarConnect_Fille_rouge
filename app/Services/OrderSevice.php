@@ -25,7 +25,7 @@ class OrderSevice
 
 
     if ($order->prestataire_id !== $service->prestataire_id) {
-          return back()->withErrors([
+          return  back()->withErrors([
              'error' => 'Vous ne pouvez pas ajouter des services de différents prestataires.'
          ]);
      }

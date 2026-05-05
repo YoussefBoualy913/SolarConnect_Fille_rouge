@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Prestataire extends Model
 {
     protected $fillable = [
-      'status',
+      'type',
       'user_id',
       'company_name'
     ];

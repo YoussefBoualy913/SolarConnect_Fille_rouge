@@ -16,4 +16,10 @@ class DashboardController extends Controller
        
         return view('prestataire.dashboard',compact('user','stats'));
     }
+    public function attend()  
+    {
+        return view('prestataire.attend');
+        
+        
+    }
 }

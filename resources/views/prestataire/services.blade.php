@@ -211,10 +211,16 @@ flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-
                         <div class="flex-1 min-w-0">
                             <div class="flex justify-between items-start mb-1">
                                 <h4 class="font-headline font-bold text-on-surface truncate">{{$service->title}}</h4>
-                                    <button
+
+                                <form action="{{ route('prestataire.services.inactiver',$service) }}" method="POST">
+                                    @csrf
+                                    @method('patch')
+                                    <button type="submit"
                                     class="flex items-center gap-1 text-[10px] font-bold text-tertiary uppercase bg-tertiary-fixed px-1.5 py-0.5 rounded">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> Active
+                                    <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> Désactive
                                 </button>
+                            </form>
+                        
                             </div>
                             <p class="text-xs text-on-surface-variant line-clamp-2 mb-3">{{$service->description}}</p>
                                 <div class="flex items-center gap-4 text-xs font-medium text-secondary">
@@ -264,10 +270,14 @@ flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-
                             <div class="flex justify-between items-start mb-1">
                                 <h4 class="font-headline font-bold text-on-surface truncate">{{ $service->title }}
                                 </h4>
+                             <form action="{{ route('prestataire.services.activer',$service) }}" method="POST">
+                                @csrf
+                                @method('patch')
                                 <button
                                     class="text-[10px] font-bold text-on-surface-variant uppercase bg-surface-container-high px-1.5 py-0.5 rounded">
-                                    Désactive
+                                    active
                                 </button>
+                            </form>
                             </div>
                             <p class="text-xs text-on-surface-variant line-clamp-2 mb-3">{{ $service->description }}
 

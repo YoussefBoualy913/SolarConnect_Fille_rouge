@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Service;
 use App\Services\StoreServiceService;
 use App\Services\UpdateServiceService;
+use App\ServiceStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -75,5 +76,21 @@ class ServiceController extends Controller
     {
         $service->delete();
        return back();
+    }
+    public function activer(Service $service)
+    {
+       $service->update([
+           'status'=>ServiceStatus::ACTIVE
+       ]);
+        return back();
+    }
+
+    public function inactiver(Service $service)
+    {
+       $service->update([
+           'status'=>ServiceStatus::INACTIVE
+       ]);
+       return back();
+        
     }
 }

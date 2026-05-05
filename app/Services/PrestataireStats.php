@@ -27,7 +27,8 @@ class PrestataireStats
 
             $note = $avg ? number_format($avg, 2) : 0;
 
-            $Nouveauxleads = Order::whereMonth('created_at', now()->month)
+            $Nouveauxleads = Order::where('prestataire_id', Auth::user()->prestataire->id)
+                     ->whereMonth('created_at', now()->month)
                      ->whereYear('created_at', now()->year)
                      ->where('status','pending')
                      ->distinct('client_id')

@@ -16,7 +16,8 @@ class Service extends Model
     'category_id',
     'prestataire_id',
     'image_url',
-    'duree'
+    'duree',
+    'status'
  ];
   
  protected $guarded = [
